@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs_tables', function (Blueprint $table) {
-            $table->id();
+        Schema::create('jobs', function (Blueprint $table) {
+           $table->id();
             $table->string('title');
             $table->string('employment_type');
             $table->string('work_setup');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('requirements')->nullable();
             $table->string('responsibilities')->nullable();
-            $table->string('status')->default('draft');;
+            $table->string('status')->default('Published');;
             $table->foreignId('posted_by')->constrained('users')->cascadeOnDelete();
             $table->string('expires_at');
             $table->timestamps();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs_tables');
+        Schema::dropIfExists('jobs');
     }
 };

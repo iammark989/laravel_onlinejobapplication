@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import {router} from "@inertiajs/react";
 
 const AdminLoginPage: React.FC = () => {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
+  const [errorMsg,setErrorMsg ] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
@@ -16,7 +18,20 @@ const AdminLoginPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(form);
+    router.post("/admin/loginattempt",form,{
+    onError: (errors) => {
+      setErrorMsg(errors.errormsg);
+      
+      //console.error(errors);
+    },
+    onSuccess: () => {
+       setForm({
+        username: "",
+        password: "",
+      });
+    },
+
+    });
 
     // Example:
     // router.post('/admin/login', form)
@@ -32,6 +47,12 @@ const AdminLoginPage: React.FC = () => {
           <p className="text-gray-500 mt-2">
             Please login to continue
           </p>
+          {errorMsg && (
+              <div className="text-red-500 text-sm mt-2">
+                {errorMsg}
+              </div>
+            )}
+
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
