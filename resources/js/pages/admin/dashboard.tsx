@@ -1,5 +1,5 @@
 import React from "react";
-import AdminLayout from "@/components/layout/adminLayout";
+import AdminLayout from "@/components/layout/AdminLayout";
 import { usePage } from "@inertiajs/react";
 
 import {

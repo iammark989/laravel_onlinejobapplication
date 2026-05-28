@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import AdminLayout from "@/components/layout/adminLayout";
+import AdminLayout from "@/components/layout/AdminLayout";
 import {router,usePage} from "@inertiajs/react";
 ;
 import {
@@ -10,15 +10,11 @@ import {
 } from "lucide-react";
 
 const CareersPage: React.FC = () => {
-  const { openedJobs = [] } = usePage().props as any;
-  const jobs = openedJobs.map((job: any) => ({
-  id: job.id,
-  title: job.title,
-  employmentType: job.employment_type,
-  workSetup: job.work_setup,
-  location: job.location,
-  applicants: job.applicants,
-}));
+  const { openJobs = [] } = usePage().props as any;
+  const jobs = Array.isArray(openJobs)
+  ? openJobs
+  : [];
+ 
 
   const [form,setForm] = useState({
         'title':"",
@@ -324,11 +320,11 @@ const CareersPage: React.FC = () => {
 
                       <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-3">
                         <span className="bg-gray-100 px-3 py-1 rounded-full">
-                          {job.employmentType}
+                          {job.employment_type}
                         </span>
 
                         <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                          {job.workSetup}
+                          {job.work_setup}
                         </span>
                       </div>
 

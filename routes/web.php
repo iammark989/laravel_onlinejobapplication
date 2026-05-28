@@ -10,9 +10,9 @@ Route::get('/', function () {
     return Inertia::render('home');
 })->name('home');
 
-Route::get('/careers', function () {
-    return Inertia::render('careers');
-})->name('careers');
+Route::get('/careers', [QueryController::class,'goToCareers'])->name('careers');
+Route::get('careers/{slug}',[QueryController::class,'goToJobDetails'])->name('jobdetails');
+Route::get('/careers/{slug}/apply',[QueryController::class,'goToApplyPage'])->name('applypage');
 
 Route::get('/contact', function () {
     return Inertia::render('contact');
@@ -34,9 +34,7 @@ Route::get('/admin/login', function () {
 
 Route::get('/admin/dashboard',[QueryController::class,'goToAdminDashboard'])->name('admindashboard')->middleware('adminonly');
 
-Route::get('/admin/careers', function () {
-    return Inertia::render('admin/careers');
-})->name('admincareers')->middleware('adminonly');
+Route::get('/admin/careers',[QueryController::class,'goToAdminCareers'])->name('admincareers')->middleware('adminonly');
 
     // USER CONTROLLERS
 Route::post('/admin/loginattempt',[UserController::class,'login'])->name('login');

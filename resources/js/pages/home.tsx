@@ -1,4 +1,4 @@
-import MainLayout from '@/components/layout/mainLayout';
+import MainLayout from '@/components/layout/MainLayout';
 import Card from '@/components/sections/cards/Card';
 
 export default function HomePage() {
@@ -24,10 +24,11 @@ export default function HomePage() {
                     <p className="mt-5 text-lg max-w-2xl mx-auto">
                         We provide modern digital solutions for businesses and organizations.
                     </p>
-
+                    {/*
                     <button className="mt-8 px-6 py-3 bg-blue-600 rounded-xl hover:bg-blue-700 transition">
                         Get Started
                     </button>
+                    */}
                 </div>
 
             </section>

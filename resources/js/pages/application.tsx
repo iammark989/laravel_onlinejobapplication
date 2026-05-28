@@ -1,14 +1,21 @@
-import MainLayout from '@/components/layout/mainLayout';
+import MainLayout from '@/components/layout/MainLayout';
 import { usePage } from '@inertiajs/react';
+import { useState } from 'react';
 
 import { PageProps as InertiaPageProps } from '@inertiajs/core';
 
-interface PageProps extends InertiaPageProps {
-    position?: string;
-}
+
 
 export default function JobApplicationPage() {
-    const { position } = usePage<PageProps>().props;
+    const { position } = usePage().props as any;
+   // const { form, setForm } = useState({
+
+   // });
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+    };
 
     return (
         <MainLayout>
@@ -34,7 +41,7 @@ export default function JobApplicationPage() {
 
                     <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
 
-                        <form className="space-y-10">
+                        <form onSubmit={handleSubmit} className="space-y-10">
 
                             {/* Position Applying For */}
                             <div>
@@ -44,7 +51,8 @@ export default function JobApplicationPage() {
 
                                 <input
                                     type="text"
-                                    value={position || ''}
+                                    name="title"
+                                    value={position.title}
                                     readOnly
                                     className="w-full border rounded-xl p-4 bg-slate-100 text-slate-700"
                                 />
