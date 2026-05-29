@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -34,4 +35,12 @@ class Jobapplication extends Model
         'admin_notes',
         'reviewed_by',
         ];
+
+        public function user(){
+          return $this->belongsTo(User::class,'reviewed_by','id');
+        }
+
+        public function job(){
+          return $this->belongsTo(Job::class,'job_id','id');
+        }
 }

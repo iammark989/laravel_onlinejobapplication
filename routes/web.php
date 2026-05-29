@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::get('/careers', [QueryController::class,'goToCareers'])->name('careers');
 Route::get('careers/{slug}',[QueryController::class,'goToJobDetails'])->name('jobdetails');
 Route::get('/careers/{slug}/apply',[QueryController::class,'goToApplyPage'])->name('applypage');
+Route::post('/careers/apply/{slug}',[UserController::class,'sendApplication'])->name('sendapplication');
 
 Route::get('/contact', function () {
     return Inertia::render('contact');
