@@ -51,12 +51,7 @@ export default function Navbar() {
                         >
                             Contact
                         </Link>
-                         <Link
-                            href="/apply"
-                            className="hover:text-blue-600 transition"
-                        >
-                            Apply
-                        </Link>
+                      
                     </nav>
 
                     {/* Mobile Menu Button */}
@@ -85,9 +80,7 @@ export default function Navbar() {
                         <Link href="/contact" onClick={() => setOpen(false)}>
                             Contact
                         </Link>
-                         <Link href="/apply" onClick={() => setOpen(false)}>
-                            Apply
-                        </Link>
+
                     </div>
                 )}
             </div>

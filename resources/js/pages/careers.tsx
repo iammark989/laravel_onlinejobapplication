@@ -1,24 +1,9 @@
 import MainLayout from '@/components/layout/MainLayout';
 import { router, usePage, Link } from "@inertiajs/react";
-import {useEffect} from "react";
-import React from 'react';
-import Swal from "sweetalert2";
+
 
 export default function CareerPage() {
-    // sweetalert
-const { flash } = usePage().props as any;
-
-useEffect(() => {
-    if (flash?.success) {
-      Swal.fire({
-        icon: "success",
-        title: flash.success,
-      // text: flash.success,
-        timer: 2000,
-        showConfirmButton: false,
-      });
-    }
-},[flash]);
+   
 
     const { openJobs = [] } = usePage().props as any;
 
@@ -49,7 +34,7 @@ useEffect(() => {
                         Join our growing team and build your future with us.
                     </p>
                 </div>
-
+                    
             </section>
 
             {/* Intro Section */}
@@ -195,7 +180,7 @@ useEffect(() => {
                 </div>
             </section>
 
-            {/* CTA Section */}
+            {/* CTA Section 
             <section className="py-20 bg-white">
                 <div className="max-w-4xl mx-auto px-4 text-center">
 
@@ -222,10 +207,9 @@ useEffect(() => {
                     >
                         Submit Your Resume
                     </button>
-
                 </div>
             </section>
-
+            */}
         </MainLayout>
     );
 }

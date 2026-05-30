@@ -1,45 +1,16 @@
-import MainLayout from '@/components/layout/mainLayout';
-import {router} from "@inertiajs/react";
+import MainLayout from '@/components/layout/MainLayout';
+import { router, usePage, Link } from "@inertiajs/react";
 
-const jobs = [
-    {
-        title: 'Frontend Developer',
-        type: 'Full Time',
-        location: 'Bulacan, Philippines',
-        description:
-            'Develop and maintain responsive web applications using React, TypeScript, and Tailwind CSS.',
-    },
-    {
-        title: 'Backend Developer',
-        type: 'Full Time',
-        location: 'Remote',
-        description:
-            'Build scalable APIs and backend systems using Laravel, MySQL, and RESTful architecture.',
-    },
-    {
-        title: 'UI/UX Designer',
-        type: 'Hybrid',
-        location: 'Quezon City, Philippines',
-        description:
-            'Design user-friendly interfaces and create engaging user experiences for web and mobile platforms.',
-    },
-    {
-        title: 'Digital Marketing Specialist',
-        type: 'Full Time',
-        location: 'Remote',
-        description:
-            'Manage social media campaigns, SEO optimization, and digital advertising strategies.',
-    },
-    {
-        title: 'Project Manager',
-        type: 'Full Time',
-        location: 'Manila, Philippines',
-        description:
-            'Lead project planning, coordinate development teams, and ensure successful project delivery.',
-    },
-];
 
 export default function CareerPage() {
+   
+
+    const { openJobs = [] } = usePage().props as any;
+
+    const jobs = Array.isArray(openJobs)
+        ? openJobs
+        : [];
+
     return (
         <MainLayout>
 
@@ -63,7 +34,7 @@ export default function CareerPage() {
                         Join our growing team and build your future with us.
                     </p>
                 </div>
-
+                    
             </section>
 
             {/* Intro Section */}
@@ -100,54 +71,116 @@ export default function CareerPage() {
 
                     <div className="grid gap-8">
 
-                        {jobs.map((job, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-3xl shadow-lg p-8 hover:shadow-xl transition"
-                            >
+                        {jobs.length > 0 ? (
+                            jobs.map((job: any) => (
+                                <div
+                                    key={job.id}
+                                    className="
+                                        bg-white
+                                        rounded-3xl
+                                        shadow-lg
+                                        p-6
+                                        md:p-8
+                                        hover:shadow-xl
+                                        transition
+                                    "
+                                >
 
-                                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                                    <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-8">
 
-                                    <div>
-                                        <h3 className="text-3xl font-bold text-slate-800">
-                                            {job.title}
-                                        </h3>
+                                        {/* Left Content */}
+                                        <div className="flex-1">
 
-                                        <div className="flex flex-wrap gap-3 mt-4">
+                                            <h3 className="text-2xl md:text-3xl font-bold text-slate-800">
+                                                {job.title}
+                                            </h3>
 
-                                            <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                                                {job.type}
-                                            </span>
+                                            <div className="flex flex-wrap gap-3 mt-4">
 
-                                            <span className="px-4 py-2 bg-slate-200 text-slate-700 rounded-full text-sm font-medium">
-                                                {job.location}
-                                            </span>
+                                                <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium capitalize">
+                                                    {job.employment_type}
+                                                </span>
+
+                                                <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium capitalize">
+                                                    {job.work_setup}
+                                                </span>
+
+                                                <span className="px-4 py-2 bg-slate-200 text-slate-700 rounded-full text-sm font-medium">
+                                                    {job.location}
+                                                </span>
+
+                                            </div>
+
+                                            <p className="mt-5 text-slate-600 leading-relaxed">
+                                                {job.short_description}
+                                            </p>
 
                                         </div>
 
-                                        <p className="mt-5 text-slate-600 leading-relaxed">
-                                            {job.description}
-                                        </p>
-                                    </div>
+                                        {/* Right Buttons */}
+                                        <div className="flex flex-col sm:flex-row gap-3 w-full xl:w-auto">
 
-                                    <div>
-                                        <button
-                                         className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
-                                            Apply Now
-                                        </button>
+                                            {/* View Details */}
+                                            <Link
+                                                href={`/careers/${job.slug}`}
+                                                className="
+                                                    text-center
+                                                    px-6
+                                                    py-3
+                                                    border
+                                                    border-slate-300
+                                                    text-slate-700
+                                                    rounded-xl
+                                                    hover:bg-slate-100
+                                                    transition
+                                                    font-medium
+                                                "
+                                            >
+                                                View Details
+                                            </Link>
+
+                                            {/* Apply */}
+                                            <Link
+                                                href={`/careers/${job.slug}/apply`}
+                                                className="
+                                                    text-center
+                                                    px-6
+                                                    py-3
+                                                    bg-blue-600
+                                                    text-white
+                                                    rounded-xl
+                                                    hover:bg-blue-700
+                                                    transition
+                                                    font-medium
+                                                "
+                                            >
+                                                Apply Now
+                                            </Link>
+
+                                        </div>
+
                                     </div>
 
                                 </div>
+                            ))
+                        ) : (
+                            <div className="bg-white rounded-3xl shadow-md p-10 text-center">
+                                <h3 className="text-2xl font-bold text-slate-800">
+                                    No Open Positions Yet
+                                </h3>
 
+                                <p className="mt-3 text-slate-500">
+                                    Please check back again soon for new opportunities.
+                                </p>
                             </div>
-                        ))}
+                        )}
 
                     </div>
 
                 </div>
             </section>
 
-            {/* CTA Section */}
+            {/* CTA Section 
             <section className="py-20 bg-white">
                 <div className="max-w-4xl mx-auto px-4 text-center">
 
@@ -160,14 +193,23 @@ export default function CareerPage() {
                         Send your resume and tell us how you can contribute.
                     </p>
 
-                    <button onClick={() => router.get('/job-application')}
-                    className="px-8 py-4 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition">
+                    <button
+                        onClick={() => router.get('/careers/apply')}
+                        className="
+                            px-8
+                            py-4
+                            bg-slate-900
+                            text-white
+                            rounded-xl
+                            hover:bg-slate-800
+                            transition
+                        "
+                    >
                         Submit Your Resume
                     </button>
-
                 </div>
             </section>
-
+            */}
         </MainLayout>
     );
 }

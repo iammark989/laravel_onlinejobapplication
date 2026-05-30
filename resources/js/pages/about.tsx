@@ -38,9 +38,8 @@ export default function AboutPage() {
                         </h2>
 
                         <p className="text-slate-600 leading-relaxed mb-5">
-                            My Company is a modern business solutions provider
-                            dedicated to helping companies grow through technology,
-                            innovation, and professional services.
+                            At My Company, we specialize in connecting growing businesses with highly skilled Virtual Assistants and remote professionals. We understand that behind every successful company is a reliable team, which is why we are committed to sourcing, screening, and matching exceptional talent with organizations worldwide.
+                            Our approach combines industry expertise, personalized recruitment solutions, and a deep understanding of remote work. Whether you're a business seeking dependable support or a professional looking for your next opportunity, we are dedicated to helping you achieve your goals through meaningful and lasting partnerships.
                         </p>
 
                         <p className="text-slate-600 leading-relaxed mb-5">
@@ -76,7 +75,7 @@ export default function AboutPage() {
                         </h2>
 
                         <p className="mt-4 text-slate-600">
-                            Driving innovation and creating better digital experiences.
+                            Empowering businesses through reliable Virtual Assistant solutions while creating meaningful career opportunities for professionals.
                         </p>
                     </div>
 
@@ -89,9 +88,10 @@ export default function AboutPage() {
                             </h3>
 
                             <p className="text-slate-600 leading-relaxed">
-                                To provide innovative and high-quality solutions
-                                that empower businesses to grow efficiently using
-                                modern technology and strategic digital transformation.
+                                To connect businesses with skilled Virtual Assistants and remote
+                                professionals while creating meaningful career opportunities. We
+                                are committed to delivering quality talent, exceptional service,
+                                and long-term success for both employers and job seekers.
                             </p>
                         </div>
 
@@ -102,9 +102,10 @@ export default function AboutPage() {
                             </h3>
 
                             <p className="text-slate-600 leading-relaxed">
-                                To become a trusted leader in delivering modern
-                                digital solutions and helping businesses succeed
-                                in the rapidly evolving technological landscape.
+                                To become a trusted leader in virtual talent recruitment,
+                                empowering businesses to build high-performing remote teams
+                                and helping professionals achieve successful and fulfilling
+                                careers worldwide.
                             </p>
                         </div>
 
@@ -113,85 +114,140 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Team Section */}
+            {/* Why Choose Us */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4">
 
                     <div className="text-center mb-14">
                         <h2 className="text-4xl font-bold text-slate-800">
-                            Meet Our Team
+                            Why Choose Us
                         </h2>
 
-                        <p className="mt-4 text-slate-600">
-                            Passionate professionals dedicated to excellence.
+                        <p className="mt-4 text-slate-600 max-w-3xl mx-auto">
+                            We help businesses find reliable Virtual Assistants and remote
+                            professionals while creating meaningful opportunities for talented
+                            individuals. Our focus is on quality, efficiency, and long-term success.
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                        {/* Team Card */}
-                        <div className="bg-slate-100 rounded-3xl overflow-hidden shadow-lg">
+                        {/* Card 1 */}
+                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
+                            <div className="text-4xl mb-4">⭐</div>
 
-                            <img
-                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200"
-                                alt="team member"
-                                className="w-full h-72 object-cover"
-                            />
+                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                Pre-Screened Talent
+                            </h3>
 
-                            <div className="p-6 text-center">
-                                <h3 className="text-2xl font-bold text-slate-800">
-                                    John Doe
-                                </h3>
-
-                                <p className="text-blue-600 mt-2">
-                                    Chief Executive Officer
-                                </p>
-                            </div>
-
+                            <p className="text-slate-600 leading-relaxed">
+                                Every applicant undergoes an initial screening process to
+                                ensure employers receive qualified and job-ready candidates.
+                            </p>
                         </div>
 
-                        {/* Team Card */}
-                        <div className="bg-slate-100 rounded-3xl overflow-hidden shadow-lg">
+                        {/* Card 2 */}
+                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
+                            <div className="text-4xl mb-4">⚡</div>
 
-                            <img
-                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200"
-                                alt="team member"
-                                className="w-full h-72 object-cover"
-                            />
+                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                Faster Hiring Process
+                            </h3>
 
-                            <div className="p-6 text-center">
-                                <h3 className="text-2xl font-bold text-slate-800">
-                                    Jane Smith
-                                </h3>
-
-                                <p className="text-blue-600 mt-2">
-                                    Creative Director
-                                </p>
-                            </div>
-
+                            <p className="text-slate-600 leading-relaxed">
+                                We streamline recruitment by sourcing, screening, and
+                                shortlisting candidates so businesses can hire faster.
+                            </p>
                         </div>
 
-                        {/* Team Card */}
-                        <div className="bg-slate-100 rounded-3xl overflow-hidden shadow-lg">
+                        {/* Card 3 */}
+                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
+                            <div className="text-4xl mb-4">🎯</div>
 
-                            <img
-                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200"
-                                alt="team member"
-                                className="w-full h-72 object-cover"
-                            />
+                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                Quality Matching
+                            </h3>
 
-                            <div className="p-6 text-center">
-                                <h3 className="text-2xl font-bold text-slate-800">
-                                    Michael Lee
-                                </h3>
-
-                                <p className="text-blue-600 mt-2">
-                                    Lead Developer
-                                </p>
-                            </div>
-
+                            <p className="text-slate-600 leading-relaxed">
+                                We focus on matching candidates based on skills,
+                                experience, and company culture for long-term success.
+                            </p>
                         </div>
 
+                        {/* Card 4 */}
+                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
+                            <div className="text-4xl mb-4">🤝</div>
+
+                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                Dedicated Support
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                We provide personalized assistance to both employers
+                                and job seekers throughout the recruitment journey.
+                            </p>
+                        </div>
+
+                        {/* Card 5 */}
+                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
+                            <div className="text-4xl mb-4">🌍</div>
+
+                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                Remote Workforce Expertise
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                We specialize in Virtual Assistant and remote staffing
+                                solutions, helping businesses build effective remote teams.
+                            </p>
+                        </div>
+
+                        {/* Card 6 */}
+                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
+                            <div className="text-4xl mb-4">📈</div>
+
+                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                Long-Term Partnerships
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                Our goal is to create successful relationships that
+                                benefit both employers and professionals for years to come.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="py-20 bg-slate-900">
+                <div className="max-w-4xl mx-auto px-4 text-center text-white">
+
+                    <h2 className="text-4xl font-bold mb-6">
+                        Ready to Build Your Team or Advance Your Career?
+                    </h2>
+
+                    <p className="text-slate-300 text-lg leading-relaxed mb-8">
+                        Whether you're looking for exceptional Virtual Assistant talent
+                        or searching for your next career opportunity, we're here to help.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                        <a
+                            href="/services/employers"
+                            className="px-8 py-4 bg-blue-600 rounded-xl hover:bg-blue-700 transition"
+                        >
+                            Hire Talent
+                        </a>
+
+                        <a
+                            href="/careers"
+                            className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-100 transition"
+                        >
+                            Browse Jobs
+                        </a>
                     </div>
 
                 </div>
