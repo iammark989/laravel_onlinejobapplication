@@ -41,6 +41,10 @@ Route::get('/admin/login', function () {
     return Inertia::render('admin/login');
 })->name('adminlogin');
 
+Route::get('/admin/profile',function (){
+    return Inertia::render('admin/userprofile');
+})->name('userprofile')->middleware('adminonly');
+
 Route::get('/admin/dashboard',[QueryController::class,'goToAdminDashboard'])->name('admindashboard')->middleware('adminonly');
 
 Route::get('/admin/careers',[QueryController::class,'goToAdminCareers'])->name('admincareers')->middleware('adminonly');

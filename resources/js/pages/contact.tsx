@@ -1,6 +1,21 @@
 import MainLayout from '@/components/layout/MainLayout';
+import { useState } from 'react';
 
 export default function ContactPage() {
+
+const [ form,setForm ] = useState({
+    name:"",
+    email:"",
+    messages:"",
+});
+
+
+const handleSubmit = (e: React.FormEvent) => {
+e.preventDefault();
+
+
+};
+
     return (
         <MainLayout>
 
@@ -13,10 +28,13 @@ export default function ContactPage() {
                             Contact Us
                         </h1>
 
-                        <form className="grid gap-6">
+                        <form onSubmit={handleSubmit} className="grid gap-6">
 
                             <input
                                 type="text"
+                                name="name"
+                                value={form.name}
+                                onChange={(e) => setForm({...form, name:e.target.value})}
                                 placeholder="Your Name"
                                 className="border rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none"
                             />

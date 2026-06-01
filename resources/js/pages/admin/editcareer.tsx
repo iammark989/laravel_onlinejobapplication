@@ -28,10 +28,10 @@ e.preventDefault();
 router.put(`/admin/careers/${job.id}`, form, {
   preserveScroll: true,
   onSuccess: () => {
-    console.log("Job updated successfully");
+    //console.log("Job updated successfully");
   },
   onError: (errors) => {
-    console.log(errors);
+   // console.log(errors);
   },
 });
 

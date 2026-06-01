@@ -48,9 +48,7 @@ class CareerController extends Controller
     }
         // SAVE EDIT/UPDATE ON POSTED JOB
     public function updatepostedjob(Request $request,$id){
-        
-    
-$incomingFields = $request->validate([
+        $incomingFields = $request->validate([
         'title' => 'required|string|max:255',
         'employment_type' => 'required|in:fulltime,parttime,contract',
         'work_setup' => 'required|in:onsite,remote,hybrid',
@@ -60,9 +58,14 @@ $incomingFields = $request->validate([
         'description' => 'required|string',
         'requirements' => 'required|string',
         'responsibilities' => 'required|string',
-        'status' => 'required',
+        //'status' => 'required',
         'expires_at' => 'required|date|after:today',
         ]);
+        $incomingFields['updated_at'] = now();
+        $job = Job::where('id',$id)->firstOrFail();
+        $job->update($incomingFields);
+
+        return redirect()->route('admincareers')->with('success',"Updated Successfully");
 }
         // CLOSE JOB
     public function close(Job $job)
