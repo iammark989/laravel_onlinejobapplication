@@ -376,7 +376,7 @@ const handleDelete = (id: number) => {
 
                       {/* Edit */}
                       <button
-                        onClick={() => router.get(`/admin/careers/${job.id}/edit`)}
+                        onClick={() => router.get(`/admin/careers/${job.slug}/edit`)}
                         className="
                           bg-yellow-100
                           hover:bg-yellow-200

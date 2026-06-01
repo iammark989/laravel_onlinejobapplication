@@ -53,6 +53,10 @@ Route::post('/admin/logout',[UserController::class,'logout'])->name('logout')->m
     // CAREER CONTROLLERS
         // POST JOB OPENING
 Route::post('/admin/post-job',[CareerController::class,'postjob'])->name('postjob')->middleware('adminonly');
+        // EDIT POSTED JOB
+Route::get('/admin/careers/{slug}/edit',[CareerController::class,'editjob'])->name('editjob')->middleware('adminonly');
+        // SAVE EDIT/UPDATE ON POSTED JOB
+Route::put('/admin/careers/{id}',[CareerController::class,'updatepostedjob'])->name('updatepostedjob')->middleware('adminonly');
         // CLOSE JOB
 Route::patch('/admin/careers/{job}/close',[CareerController::class,'close'])->name('closejob')->middleware('adminonly');
         // DELETE JOB
@@ -61,6 +65,6 @@ Route::delete('/admin/careers/{job}',[CareerController::class,'destroy'])->name(
 Route::get('/admin/careers/{slug}/applicants',[CareerController::class,'viewApplicants'])->name('viewapplicants')->middleware('adminonly');
         // UPDATE APPLICANT STATUS
 Route::put('/admin/applicants/{id}',[CareerController::class,'updateApplicantStatus'])->name('updateapplicantstatus')->middleware('adminonly');
-
+        
 require __DIR__.'/settings.php';
 //require __DIR__.'/auth.php';
