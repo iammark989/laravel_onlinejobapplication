@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,7 @@ Route::get('/services/job-seekers', function (){
 Route::get('/contact', function () {
     return Inertia::render('contact');
 })->name('contact');
+Route::post('/sendmessage',[ContactController::class,'sendmessage'])->name('sendmessage');
 
 Route::get('/about', function () {
     return Inertia::render('about');

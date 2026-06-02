@@ -1,17 +1,48 @@
 import MainLayout from '@/components/layout/MainLayout';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { router,usePage } from '@inertiajs/react';
+import Swal from 'sweetalert2';
 
 export default function ContactPage() {
 
 const [ form,setForm ] = useState({
     name:"",
     email:"",
-    messages:"",
+    message:"",
 });
+ 
 
+ // sweetalert
+    
+     
 
 const handleSubmit = (e: React.FormEvent) => {
 e.preventDefault();
+
+    router.post('/sendmessage',form,{
+    onSuccess: () => { 
+       Swal.fire({
+              icon: "success",
+              title: "Message Sent!",
+              timer: 2000,
+              showConfirmButton: false,
+          });
+        setForm({
+           name:"",
+           email:"",
+           message:"", 
+        });
+    },
+    onError:(errors) =>{
+    Swal.fire({
+            icon: "error",
+            title: "Failed",
+            text: "Please check your input.",
+        });
+    },
+
+    });
+    
 
 
 };
@@ -37,18 +68,27 @@ e.preventDefault();
                                 onChange={(e) => setForm({...form, name:e.target.value})}
                                 placeholder="Your Name"
                                 className="border rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none"
+                                required
                             />
 
                             <input
                                 type="email"
+                                name='email'
+                                value={form.email}
+                                onChange={(e) => setForm({...form, email:e.target.value})}
                                 placeholder="Your Email"
                                 className="border rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none"
+                                required
                             />
 
                             <textarea
+                                name='message'
+                                value={form.message}
+                                onChange={(e) => setForm({...form, message:e.target.value})}
                                 rows={6}
                                 placeholder="Your Message"
                                 className="border rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none"
+                                required
                             />
 
                             <button className="bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition">
