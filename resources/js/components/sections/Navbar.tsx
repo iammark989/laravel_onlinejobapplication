@@ -1,9 +1,39 @@
 import { useState } from "react";
-import { Link } from "@inertiajs/react";
-import { Menu, X } from "lucide-react";
+import { Link,usePage } from "@inertiajs/react";
+import { Menu, X, ChevronDown,Package } from "lucide-react";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+
+    const { url } = usePage();
+    const navLinkClass = (path: string) =>
+    url === path
+        ? `
+            text-[#D4AF37]
+            font-medium
+            border-b-2
+            border-[#D4AF37]
+            pb-1
+          `
+        : `
+            text-slate-200
+            hover:text-[#D4AF37]
+            transition
+            font-medium
+          `;
+     const navLinkClassMobile = (path: string) =>
+    url === path
+        ? `
+             text-[#D4AF37]
+             font-medium
+          `
+        : `
+            text-slate-200
+            hover:text-[#D4AF37]
+          `;
+
+     
+  const [itemsOpen, setItemsOpen] = useState(false);
 
     return (
         <header
@@ -51,37 +81,59 @@ export default function Navbar() {
 
                         <Link
                             href="/"
-                            className="
-                                text-[#D4AF37]
-                                font-medium
-                                border-b-2
-                                border-[#D4AF37]
-                                pb-1
-                            "
+                            className={navLinkClass("/")}
                         >
                             Home
                         </Link>
-                            {/*}
-                        <Link
-                            href="/careers"
-                            className="
-                                text-slate-200
-                                hover:text-[#D4AF37]
-                                transition
-                                font-medium
-                            "
-                        >
-                            Careers
-                        </Link>*/}
+                             
+                             {/* Items Dropdown */}
+                            <div className="relative">
+                            <button
+                                onClick={() => setItemsOpen(!itemsOpen)}
+                                className={`${navLinkClass("/services")} flex items-center`}
+                            >
+                                Services
+                                <ChevronDown
+                                size={16}
+                                className={`transition-transform ${
+                                    itemsOpen ? "rotate-180" : ""
+                                }`}
+                                />
+                            </button>
+
+                            {itemsOpen && (
+                                <div
+                                className="
+                                    absolute
+                                    right-0
+                                    mt-2
+                                    w-64
+                                    bg-white
+                                    border
+                                    rounded-xl
+                                    shadow-lg
+                                    z-50
+                                "
+                                >
+                                <Link
+                                    href="/items"
+                                    className="
+                                    flex items-center gap-3
+                                    px-4 py-3
+                                    hover:bg-gray-50
+                                    "
+                                >
+                                    <Package size={18} />
+                                    Virtual Assistant
+                                </Link>
+                                
+                                </div>
+                            )}
+                            </div>
 
                         <Link
                             href="/about"
-                            className="
-                                text-slate-200
-                                hover:text-[#D4AF37]
-                                transition
-                                font-medium
-                            "
+                            className={navLinkClass("/about")}
                         >
                             About
                         </Link>
@@ -159,32 +211,39 @@ export default function Navbar() {
                         <Link
                             href="/"
                             onClick={() => setOpen(false)}
-                            className="
-                                text-[#D4AF37]
-                                font-medium
-                            "
+                           className={navLinkClassMobile("/")}
                         >
                             Home
                         </Link>
 
-                        {/*<Link
-                            href="/careers"
-                            onClick={() => setOpen(false)}
-                            className="
-                                text-slate-200
-                                hover:text-[#D4AF37]
-                            "
+                       <button
+                        onClick={() => setItemsOpen(!itemsOpen)}
+                         className={`${navLinkClassMobile("/services")} flex items-center justify-between`}
                         >
-                            Careers
-                        </Link>
-                        */}
+                        Services
+                        <ChevronDown
+                        size={16}
+                        className={`transition-transform ${
+                            itemsOpen ? "rotate-180" : ""
+                        }`}
+                        />
+                    </button>
+
+              {itemsOpen && (
+                <div className="ml-4 flex flex-col">
+                  <Link
+                    href="/services/virtual-assistant"
+                    className="text-slate-200 hover:text-[#D4AF37]"
+                  >
+                    Virtual Assisant
+                  </Link>
+
+                </div>
+              )}
                         <Link
                             href="/about"
                             onClick={() => setOpen(false)}
-                            className="
-                                text-slate-200
-                                hover:text-[#D4AF37]
-                            "
+                            className={navLinkClassMobile("/about")}
                         >
                             About
                         </Link>
@@ -192,10 +251,7 @@ export default function Navbar() {
                         <Link
                             href="/contact"
                             onClick={() => setOpen(false)}
-                            className="
-                                text-slate-200
-                                hover:text-[#D4AF37]
-                            "
+                            className={navLinkClassMobile("/contact")}
                         >
                             Contact
                         </Link>

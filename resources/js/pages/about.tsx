@@ -31,39 +31,89 @@ export default function AboutPage() {
 
             {/* Company Overview */}
             <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                <div className="max-w-7xl mx-auto px-4 gap-12 items-center">
 
                     <div>
                         <h2 className="text-4xl font-bold text-slate-800 mb-6">
-                            Who We Are
+                            Our Story
                         </h2>
 
                         <p className="text-slate-600 leading-relaxed mb-5">
-                            At My Company, we specialize in connecting growing businesses with highly skilled Virtual Assistants and remote professionals. We understand that behind every successful company is a reliable team, which is why we are committed to sourcing, screening, and matching exceptional talent with organizations worldwide.
-                            Our approach combines industry expertise, personalized recruitment solutions, and a deep understanding of remote work. Whether you're a business seeking dependable support or a professional looking for your next opportunity, we are dedicated to helping you achieve your goals through meaningful and lasting partnerships.
+                         Sometimes the best ideas come from the most unexpected conversations.
                         </p>
 
                         <p className="text-slate-600 leading-relaxed mb-5">
-                            Since our establishment, we have worked with various
-                            organizations to create efficient digital systems,
-                            responsive websites, and scalable business solutions.
+                            After more than 21 years, three high school friends—Bern, Kristine, and Wie
+                            —found themselves reunited. What started as a simple catch-up quickly turned
+                            into a meaningful conversation about their careers, experiences, and the
+                            challenges they had encountered along the way.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            As the conversation unfolded, one thing became clear: despite taking different
+                            paths, they all shared the same belief.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            Businesses grow when they have the right people behind them.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            They had seen talented business owners overwhelmed by daily tasks that pulled
+                            them away from growth. They had also seen highly skilled remote professionals
+                            capable of delivering exceptional results when given the opportunity.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            That realization sparked an idea.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            What if they could bridge the gap between ambitious business owners and exceptional
+                            remote talent?
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            From that vision, <strong>GetStuffed by BKW</strong> was born.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            Built on friendship, trust, and decades of combined experience, GetStuffed by BKW
+                            was created to help entrepreneurs and companies find dependable, skilled Virtual
+                            Assistants who can become valuable extensions of their teams.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            We understand the challenges of both sides because we've lived them. We've worked
+                            behind the scenes supporting businesses, and we've experienced the responsibilities
+                            of running one.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            Our mission goes beyond staffing. We aim to build long-term partnerships that help
+                            businesses operate smarter, grow faster, and achieve more while creating meaningful
+                            opportunities for talented professionals worldwide.
+                        </p>
+
+                        <p className="text-slate-600 leading-relaxed mb-5">
+                            At GetStuffed by BKW, we believe talent knows no borders. The right person can
+                            transform a business regardless of where they are located.
                         </p>
 
                         <p className="text-slate-600 leading-relaxed">
-                            Our team focuses on quality, reliability, and long-term
-                            partnerships with our clients.
+                            And when the right business meets the right talent, incredible things happen.
                         </p>
                     </div>
                         
-                    <div>
+                    {/*<div>
                         <img
                             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400"
                             alt="team"
                             className="rounded-3xl shadow-xl"
                             
                         />
-                    </div>
-        
+                    </div>*/}
+                        
 
                 </div>
             </section>
@@ -491,7 +541,7 @@ export default function AboutPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 bg-[#5A5344]">
+            <section className="py-20 bg-[#111111]">
                 <div className="max-w-4xl mx-auto px-4 text-center text-white">
 
                     <h2 className="text-4xl font-bold mb-6">

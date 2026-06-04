@@ -82,7 +82,19 @@ export default function HomePage() {
 
                         {/* Employers */}
                         <div className="bg-white rounded-3xl shadow-lg p-8">
-                            <div className="text-5xl mb-5">🏢</div>
+
+                            <div className="mb-6 flex justify-center">
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/employers.png`}
+                                    alt="Employers"
+                                    className="
+                                        w-full
+                                        max-w-[220px]
+                                        h-auto
+                                        object-contain
+                                    "
+                                />
+                            </div>
 
                             <h3 className="text-2xl font-bold text-slate-800">
                                 For Employers
@@ -96,15 +108,37 @@ export default function HomePage() {
 
                             <Link
                                 href="/services/employers"
-                                className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+                                className="
+                                    inline-block
+                                    mt-6
+                                    px-6
+                                    py-3
+                                    bg-blue-600
+                                    text-white
+                                    rounded-xl
+                                    hover:bg-blue-700
+                                    transition
+                                "
                             >
                                 Learn More
                             </Link>
+
                         </div>
 
                         {/* Job Seekers */}
                         <div className="bg-white rounded-3xl shadow-lg p-8">
-                            <div className="text-5xl mb-5">💼</div>
+                            <div className="mb-6 flex justify-center">
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/jobseekers.png`}
+                                    alt="Employers"
+                                    className="
+                                        w-full
+                                        max-w-[220px]
+                                        h-auto
+                                        object-contain
+                                    "
+                                />
+                            </div>
 
                             <h3 className="text-2xl font-bold text-slate-800">
                                 For Job Seekers
