@@ -12,8 +12,6 @@ export default function MainLayout({ children }: LayoutProps) {
       const { flash } = usePage().props as any;  
      useEffect(() => {
       if (flash?.success) {
-          console.log("Showing Swal");
-  
           Swal.fire({
               icon: "success",
               title: flash.success,

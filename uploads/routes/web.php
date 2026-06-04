@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,7 @@ Route::get('/services/job-seekers', function (){
 Route::get('/contact', function () {
     return Inertia::render('contact');
 })->name('contact');
+Route::post('/sendmessage',[ContactController::class,'sendmessage'])->name('sendmessage');
 
 Route::get('/about', function () {
     return Inertia::render('about');
@@ -41,6 +43,10 @@ Route::get('/admin/login', function () {
     return Inertia::render('admin/login');
 })->name('adminlogin');
 
+Route::get('/admin/profile',function (){
+    return Inertia::render('admin/userprofile');
+})->name('userprofile')->middleware('adminonly');
+
 Route::get('/admin/dashboard',[QueryController::class,'goToAdminDashboard'])->name('admindashboard')->middleware('adminonly');
 
 Route::get('/admin/careers',[QueryController::class,'goToAdminCareers'])->name('admincareers')->middleware('adminonly');
@@ -53,6 +59,10 @@ Route::post('/admin/logout',[UserController::class,'logout'])->name('logout')->m
     // CAREER CONTROLLERS
         // POST JOB OPENING
 Route::post('/admin/post-job',[CareerController::class,'postjob'])->name('postjob')->middleware('adminonly');
+        // EDIT POSTED JOB
+Route::get('/admin/careers/{slug}/edit',[CareerController::class,'editjob'])->name('editjob')->middleware('adminonly');
+        // SAVE EDIT/UPDATE ON POSTED JOB
+Route::put('/admin/careers/{id}',[CareerController::class,'updatepostedjob'])->name('updatepostedjob')->middleware('adminonly');
         // CLOSE JOB
 Route::patch('/admin/careers/{job}/close',[CareerController::class,'close'])->name('closejob')->middleware('adminonly');
         // DELETE JOB
@@ -61,6 +71,6 @@ Route::delete('/admin/careers/{job}',[CareerController::class,'destroy'])->name(
 Route::get('/admin/careers/{slug}/applicants',[CareerController::class,'viewApplicants'])->name('viewapplicants')->middleware('adminonly');
         // UPDATE APPLICANT STATUS
 Route::put('/admin/applicants/{id}',[CareerController::class,'updateApplicantStatus'])->name('updateapplicantstatus')->middleware('adminonly');
-
+        
 require __DIR__.'/settings.php';
 //require __DIR__.'/auth.php';

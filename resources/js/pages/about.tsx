@@ -1,4 +1,5 @@
 import MainLayout from '@/components/layout/MainLayout';
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
     return (
@@ -53,66 +54,334 @@ export default function AboutPage() {
                             partnerships with our clients.
                         </p>
                     </div>
-
+                        
                     <div>
                         <img
                             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400"
                             alt="team"
                             className="rounded-3xl shadow-xl"
+                            
                         />
                     </div>
+        
 
                 </div>
             </section>
 
-            {/* Mission Vision */}
-            <section className="py-20 bg-slate-100">
-                <div className="max-w-7xl mx-auto px-4">
+            {/* Company additional about us */}
+            
+            <section className="py-24 bg-white">
+                    <div className="max-w-7xl mx-auto px-4">
+                    
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-                    <div className="text-center mb-14">
-                        <h2 className="text-4xl font-bold text-slate-800">
-                            Our Mission & Vision
-                        </h2>
+                            {/* Image mission */}
+                            <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                           
+                            >
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourmission.png`}
+                                    alt="Mission"
+                                    className="
+                                        rounded-3xl
+                                        shadow-xl
+                                        w-full
+                                        h-[350px]
+                                        object-cover
+                                    "
+                                />
 
-                        <p className="mt-4 text-slate-600">
-                            Empowering businesses through reliable Virtual Assistant solutions while creating meaningful career opportunities for professionals.
-                        </p>
-                    </div>
+                            </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-8">
+                            {/* Content mission*/}
+                            <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                    Our Mission
+                                </span>
 
-                        {/* Mission */}
-                        <div className="bg-white rounded-3xl p-8 shadow-lg">
-                            <h3 className="text-3xl font-bold text-blue-600 mb-5">
-                                Our Mission
-                            </h3>
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                    Helping Businesses Focus on What Matters Most
+                                </h2>
 
-                            <p className="text-slate-600 leading-relaxed">
-                                To connect businesses with skilled Virtual Assistants and remote
-                                professionals while creating meaningful career opportunities. We
-                                are committed to delivering quality talent, exceptional service,
-                                and long-term success for both employers and job seekers.
-                            </p>
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                    To help business owners reclaim their time, 
+                                increase productivity, and achieve sustainable 
+                                growth by connecting them with exceptional virtual
+                                 professionals who deliver real results.
+                                </p>
+                            </div>              
                         </div>
 
-                        {/* Vision */}
-                        <div className="bg-white rounded-3xl p-8 shadow-lg">
-                            <h3 className="text-3xl font-bold text-blue-600 mb-5">
-                                Our Vision
-                            </h3>
 
-                            <p className="text-slate-600 leading-relaxed">
-                                To become a trusted leader in virtual talent recruitment,
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                                <div className="order-2 lg:order-1">
+                                    {/* content vision*/}
+                                    <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                     Our Vision
+                                </span>
+
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                    Building Opportunities Without Borders
+                                </h2>
+
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                    To become a trusted leader in virtual talent recruitment,
                                 empowering businesses to build high-performing remote teams
                                 and helping professionals achieve successful and fulfilling
                                 careers worldwide.
-                            </p>
+                                </p>
+                            </div>    
+                                </div>
+
+                                <div className="order-1 lg:order-2">
+                                    {/* image */}
+                                            <motion.div
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                
+                                    >
+                                    <img
+                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourvision.png`}
+                                        alt="Mission"
+                                        className="
+                                            rounded-3xl
+                                            shadow-xl
+                                            w-full
+                                            h-[350px]
+                                            object-cover
+                                        "
+                                    />
+                                </motion.div>
+                                </div>
+
+                            </div>
+
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                            {/* Image believe */}
+                            <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                           
+                            >
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/webelieve.png`}
+                                    alt="Mission"
+                                    className="
+                                        rounded-3xl
+                                        shadow-xl
+                                        w-full
+                                        h-[350px]
+                                        object-cover
+                                    "
+                                />
+
+                            </motion.div>
+
+                            {/* Content believe*/}
+                            <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                    What We Believe
+                                </span>
+
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                    Great Businesses Are Built by Great People
+                                </h2>
+
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                Every successful business is built by great people.
+                                We help connect businesses with talent that makes a
+                                difference.
+                                </p>
+                            </div>              
                         </div>
 
-                    </div>
 
-                </div>
-            </section>
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                                <div className="order-2 lg:order-1">
+                                    {/* content talent*/}
+                                    <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                     Talent Has No Boundaries 
+                                </span>
+
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                    Connecting Talent Across the Globe
+                                </h2>
+
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                     We believe skills, dedication, and excellence
+                                are not limited by geography. 
+                                </p>
+                            </div>    
+                                </div>
+
+                                <div className="order-1 lg:order-2">
+                                    {/* image talent */}
+                                            <motion.div
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                
+                                    >
+                                    <img
+                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/talent.png`}
+                                        alt="Mission"
+                                        className="
+                                            rounded-3xl
+                                            shadow-xl
+                                            w-full
+                                            h-[350px]
+                                            object-cover
+                                        "
+                                    />
+                                </motion.div>
+                                </div>
+
+                            </div>
+
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                            {/* Image partnership */}
+                            <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                           
+                            >
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/partnership.png`}
+                                    alt="Mission"
+                                    className="
+                                        rounded-3xl
+                                        shadow-xl
+                                        w-full
+                                        h-[350px]
+                                        object-cover
+                                    "
+                                />
+
+                            </motion.div>
+
+                            {/* Content partnership*/}
+                            <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                    Partnerships Matter
+                                </span>
+
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                  Success Begins with Strong Partnerships
+                                </h2>
+
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                We focus on building lasting relationships
+                                based on trust, communication, and shared success.
+                                </p>
+                            </div>              
+                        </div>
+
+
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                                <div className="order-2 lg:order-1">
+                                    {/* content standard*/}
+                                    <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                      Excellence Is the Standard
+                                </span>
+
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                    Delivering Excellence in Every Placement
+                                </h2>
+
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                    We are committed to delivering quality support,
+                                exceptional service, and measurable value. 
+                                </p>
+                            </div>    
+                                </div>
+
+                                <div className="order-1 lg:order-2">
+                                    {/* image standard */}
+                                            <motion.div
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                
+                                    >
+                                    <img
+                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/standard.png`}
+                                        alt="Mission"
+                                        className="
+                                            rounded-3xl
+                                            shadow-xl
+                                            w-full
+                                            h-[350px]
+                                            object-cover
+                                        "
+                                    />
+                                </motion.div>
+                                </div>
+
+                            </div>
+
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                            {/* Image Journey */}
+                            <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                           
+                            >
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/journey.png`}
+                                    alt="Mission"
+                                    className="
+                                        rounded-3xl
+                                        shadow-xl
+                                        w-full
+                                        h-[350px]
+                                        object-cover
+                                    "
+                                />
+
+                            </motion.div>
+
+                            {/* Content journey*/}
+                            <div>
+                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                    Growth Is a Journey 
+                                </span>
+
+                                <h2 className="text-4xl font-bold text-slate-800 mt-5">
+                                    Growing Together Every Step of the Way
+                                </h2>
+
+                                <p className=" mt-5 text-slate-600 leading-relaxed">
+                                     As our clients grow, we grow with them,
+                               celebrating every milestone together.
+                                </p>
+                            </div>              
+                        </div>               
+
+                    </div>
+                </section>
 
             {/* Why Choose Us */}
             <section className="py-20 bg-white">
@@ -222,7 +491,7 @@ export default function AboutPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 bg-slate-900">
+            <section className="py-20 bg-[#5A5344]">
                 <div className="max-w-4xl mx-auto px-4 text-center text-white">
 
                     <h2 className="text-4xl font-bold mb-6">

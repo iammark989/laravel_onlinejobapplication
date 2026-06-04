@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import AdminLayout from "@/components/layout/AdminLayout";
 import {router,usePage,Link} from "@inertiajs/react";
 import Swal from "sweetalert2";
@@ -50,6 +50,17 @@ const handleDelete = (id: number) => {
   });
 };
  
+const { flash } = usePage().props as any;  
+     useEffect(() => {
+      if (flash?.success) {  
+          Swal.fire({
+              icon: "success",
+              title: flash.success,
+              timer: 2000,
+              showConfirmButton: false,
+          });
+      }
+  }, [flash?.success]);
 
 
   const [form,setForm] = useState({
@@ -376,7 +387,7 @@ const handleDelete = (id: number) => {
 
                       {/* Edit */}
                       <button
-                        onClick={() => router.get(`/admin/careers/${job.id}/edit`)}
+                        onClick={() => router.get(`/admin/careers/${job.slug}/edit`)}
                         className="
                           bg-yellow-100
                           hover:bg-yellow-200

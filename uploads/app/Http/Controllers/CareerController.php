@@ -14,18 +14,16 @@ class CareerController extends Controller
     // POST JOB OPENING
     public function postjob(Request $request){
         $incomingFields = $request->validate([
-        'title' => 'required',
-        'employment_type' => 'required',
-        'work_setup'=> 'required',
-        'location'=> 'required',
-        'salary'=> 'required',
-        //'short_description'=> 'required',
-        'description'=> 'required',
-        'requirements'=> 'required',
-        'responsibilities'=> 'required',
-        //'status'=> 'required',
-        //'posted_by'=> 'required',
-        'expires_at'=> 'required',
+        'title' => 'required|string|max:255',
+        'employment_type' => 'required|in:fulltime,parttime,contract',
+        'work_setup' => 'required|in:onsite,remote,hybrid',
+        'location' => 'required|string|max:255',
+        'salary' => 'nullable|string|max:100',
+        'short_description' => 'nullable|string|max:500',
+        'description' => 'required|string',
+        'requirements' => 'required|string',
+        'responsibilities' => 'required|string',
+        'expires_at' => 'required|date|after:today',
         ]);
         $slug = Str::slug($request->title);
         $count = Job::where('slug','LIKE',"{slug}%")->count();
@@ -41,6 +39,34 @@ class CareerController extends Controller
         
     }
 
+        // GOTO EDIT JOB
+    public function editjob($slug){
+        $job = Job::where('slug',$slug)->firstOrFail();
+        return Inertia::render('admin/editcareer',[
+            'job' => $job,
+        ]);
+    }
+        // SAVE EDIT/UPDATE ON POSTED JOB
+    public function updatepostedjob(Request $request,$id){
+        $incomingFields = $request->validate([
+        'title' => 'required|string|max:255',
+        'employment_type' => 'required|in:fulltime,parttime,contract',
+        'work_setup' => 'required|in:onsite,remote,hybrid',
+        'location' => 'required|string|max:255',
+        'salary' => 'nullable|string|max:100',
+        'short_description' => 'nullable|string|max:500',
+        'description' => 'required|string',
+        'requirements' => 'required|string',
+        'responsibilities' => 'required|string',
+        //'status' => 'required',
+        'expires_at' => 'required|date|after:today',
+        ]);
+        $incomingFields['updated_at'] = now();
+        $job = Job::where('id',$id)->firstOrFail();
+        $job->update($incomingFields);
+
+        return redirect()->route('admincareers')->with('success',"Updated Successfully");
+}
         // CLOSE JOB
     public function close(Job $job)
     {
