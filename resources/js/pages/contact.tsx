@@ -91,7 +91,7 @@ e.preventDefault();
                                 required
                             />
 
-                            <button className="bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition">
+                            <button className="bg-slate-600 text-[#F5F2EA] py-4 rounded-xl hover:bg-blue-700 transition">
                                 Send Message
                             </button>
 

@@ -1,5 +1,7 @@
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from "framer-motion";
+import Whychooseus from '@/components/sections/whychooseus';
+import Ctaforboth from '@/components/sections/ctaForBoth';
 
 export default function AboutPage() {
     return (
@@ -29,94 +31,146 @@ export default function AboutPage() {
 
             </section>
 
-            {/* Company Overview */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 gap-12 items-center">
+            {/* Our Story */}
+                <section className="py-20 bg-white">
+                    <div className="max-w-7xl mx-auto px-4">
 
-                    <div>
-                        <h2 className="text-4xl font-bold text-slate-800 mb-6">
-                            Our Story
-                        </h2>
+                        {/* Section Header */}
+                        <div className="text-center max-w-3xl mx-auto mb-16">
+                            <span className="text-slate-600 font-semibold uppercase tracking-wider">
+                                About Us
+                            </span>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                         Sometimes the best ideas come from the most unexpected conversations.
-                        </p>
+                            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-slate-800">
+                                Our Story
+                            </h2>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            After more than 21 years, three high school friends—Bern, Kristine, and Wie
-                            —found themselves reunited. What started as a simple catch-up quickly turned
-                            into a meaningful conversation about their careers, experiences, and the
-                            challenges they had encountered along the way.
-                        </p>
+                            <p className="mt-5 text-lg text-slate-600 leading-relaxed">
+                                A journey built on friendship, experience, and a shared
+                                vision of connecting businesses with exceptional remote talent.
+                            </p>
+                        </div>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            As the conversation unfolded, one thing became clear: despite taking different
-                            paths, they all shared the same belief.
-                        </p>
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            Businesses grow when they have the right people behind them.
-                        </p>
+                            {/* Image */}
+                            <div>
+                                <img
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/aboutus.png`}
+                                    alt="Founders discussing ideas"
+                                    className="
+                                        w-full
+                                        rounded-3xl
+                                        shadow-2xl
+                                        object-cover
+                                        h-[350px]
+                                        md:h-[500px]
+                                    "
+                                />
+                            </div>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            They had seen talented business owners overwhelmed by daily tasks that pulled
-                            them away from growth. They had also seen highly skilled remote professionals
-                            capable of delivering exceptional results when given the opportunity.
-                        </p>
+                            {/* Story Content */}
+                            <div>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            That realization sparked an idea.
-                        </p>
+                                <h3 className="text-3xl font-bold text-slate-800 mb-6">
+                                    Where It All Began
+                                </h3>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            What if they could bridge the gap between ambitious business owners and exceptional
-                            remote talent?
-                        </p>
+                                <p className="text-slate-600 leading-relaxed mb-5">
+                                    Sometimes the best ideas emerge from the most unexpected
+                                    conversations.
+                                </p>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            From that vision, <strong>GetStuffed by BKW</strong> was born.
-                        </p>
+                                <p className="text-slate-600 leading-relaxed mb-5">
+                                    More than 21 years after high school, three friends —
+                                    <strong> Bern, Kristine, and Wie </strong>
+                                    reunited and reflected on their careers, experiences,
+                                    and the challenges they had encountered throughout
+                                    their professional journeys.
+                                </p>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            Built on friendship, trust, and decades of combined experience, GetStuffed by BKW
-                            was created to help entrepreneurs and companies find dependable, skilled Virtual
-                            Assistants who can become valuable extensions of their teams.
-                        </p>
+                                <p className="text-slate-600 leading-relaxed mb-5">
+                                    Despite taking different paths, they discovered a
+                                    common belief:
+                                </p>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            We understand the challenges of both sides because we've lived them. We've worked
-                            behind the scenes supporting businesses, and we've experienced the responsibilities
-                            of running one.
-                        </p>
+                                <div className="
+                                    border-l-4
+                                    border-slate-300
+                                    pl-6
+                                    py-2
+                                    my-8
+                                ">
+                                    <p className="text-xl font-semibold text-slate-800">
+                                        Businesses thrive when they have the right people
+                                        behind them.
+                                    </p>
+                                </div>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            Our mission goes beyond staffing. We aim to build long-term partnerships that help
-                            businesses operate smarter, grow faster, and achieve more while creating meaningful
-                            opportunities for talented professionals worldwide.
-                        </p>
+                                <p className="text-slate-600 leading-relaxed mb-5">
+                                    They had witnessed business owners overwhelmed by
+                                    day-to-day operations, while talented remote
+                                    professionals remained underutilized despite their
+                                    ability to deliver exceptional results.
+                                </p>
 
-                        <p className="text-slate-600 leading-relaxed mb-5">
-                            At GetStuffed by BKW, we believe talent knows no borders. The right person can
-                            transform a business regardless of where they are located.
-                        </p>
+                                <p className="text-slate-600 leading-relaxed">
+                                    This realization inspired the creation of
+                                    <strong> GetStaffed by BKW </strong> —
+                                    a company dedicated to bridging the gap between
+                                    ambitious businesses and skilled Virtual Assistants,
+                                    creating partnerships that empower growth,
+                                    productivity, and long-term success.
+                                </p>
 
-                        <p className="text-slate-600 leading-relaxed">
-                            And when the right business meets the right talent, incredible things happen.
-                        </p>
+                            </div>
+
+                        </div>
                     </div>
-                        
-                    {/*<div>
-                        <img
-                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400"
-                            alt="team"
-                            className="rounded-3xl shadow-xl"
-                            
-                        />
-                    </div>*/}
-                        
+                </section>
 
-                </div>
-            </section>
+                <section className="py-16 bg-slate-50">
+                    <div className="max-w-6xl mx-auto px-4">
+
+                        <div className="grid md:grid-cols-3 gap-8">
+
+                            <div className="bg-white p-8 rounded-3xl shadow-md">
+                                <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                    Friendship
+                                </h3>
+
+                                <p className="text-slate-600">
+                                    Built on trust, shared values, and a commitment
+                                    to helping others succeed.
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-8 rounded-3xl shadow-md">
+                                <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                    Experience
+                                </h3>
+
+                                <p className="text-slate-600">
+                                    Decades of combined professional experience
+                                    supporting businesses and teams.
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-8 rounded-3xl shadow-md">
+                                <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                                    Purpose
+                                </h3>
+
+                                <p className="text-slate-600">
+                                    Connecting exceptional talent with businesses
+                                    that need reliable support to grow.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
 
             {/* Company additional about us */}
             
@@ -135,7 +189,7 @@ export default function AboutPage() {
                             >
                                 <img
                                     src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourmission.png`}
-                                    alt="Mission"
+                                    alt="Our Mission"
                                     className="
                                         rounded-3xl
                                         shadow-xl
@@ -149,7 +203,7 @@ export default function AboutPage() {
 
                             {/* Content mission*/}
                             <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                     Our Mission
                                 </span>
 
@@ -172,7 +226,7 @@ export default function AboutPage() {
                                 <div className="order-2 lg:order-1">
                                     {/* content vision*/}
                                     <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                      Our Vision
                                 </span>
 
@@ -190,7 +244,7 @@ export default function AboutPage() {
                                 </div>
 
                                 <div className="order-1 lg:order-2">
-                                    {/* image */}
+                                    {/* image vision*/}
                                             <motion.div
                                     initial={{ opacity: 0, y: 40 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +254,7 @@ export default function AboutPage() {
                                     >
                                     <img
                                         src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourvision.png`}
-                                        alt="Mission"
+                                        alt="Our Vision"
                                         className="
                                             rounded-3xl
                                             shadow-xl
@@ -226,7 +280,7 @@ export default function AboutPage() {
                             >
                                 <img
                                     src={`${import.meta.env.VITE_IMAGE_URL}/files/images/webelieve.png`}
-                                    alt="Mission"
+                                    alt="What We Believe"
                                     className="
                                         rounded-3xl
                                         shadow-xl
@@ -240,7 +294,7 @@ export default function AboutPage() {
 
                             {/* Content believe*/}
                             <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                     What We Believe
                                 </span>
 
@@ -262,7 +316,7 @@ export default function AboutPage() {
                                 <div className="order-2 lg:order-1">
                                     {/* content talent*/}
                                     <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                      Talent Has No Boundaries 
                                 </span>
 
@@ -288,7 +342,7 @@ export default function AboutPage() {
                                     >
                                     <img
                                         src={`${import.meta.env.VITE_IMAGE_URL}/files/images/talent.png`}
-                                        alt="Mission"
+                                        alt="Talent Has No Boundaries"
                                         className="
                                             rounded-3xl
                                             shadow-xl
@@ -314,7 +368,7 @@ export default function AboutPage() {
                             >
                                 <img
                                     src={`${import.meta.env.VITE_IMAGE_URL}/files/images/partnership.png`}
-                                    alt="Mission"
+                                    alt="Partnerships Matter"
                                     className="
                                         rounded-3xl
                                         shadow-xl
@@ -328,7 +382,7 @@ export default function AboutPage() {
 
                             {/* Content partnership*/}
                             <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                     Partnerships Matter
                                 </span>
 
@@ -349,7 +403,7 @@ export default function AboutPage() {
                                 <div className="order-2 lg:order-1">
                                     {/* content standard*/}
                                     <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                       Excellence Is the Standard
                                 </span>
 
@@ -375,7 +429,7 @@ export default function AboutPage() {
                                     >
                                     <img
                                         src={`${import.meta.env.VITE_IMAGE_URL}/files/images/standard.png`}
-                                        alt="Mission"
+                                        alt="Excellence Is the Standard"
                                         className="
                                             rounded-3xl
                                             shadow-xl
@@ -401,7 +455,7 @@ export default function AboutPage() {
                             >
                                 <img
                                     src={`${import.meta.env.VITE_IMAGE_URL}/files/images/journey.png`}
-                                    alt="Mission"
+                                    alt="Growth Is a Journey"
                                     className="
                                         rounded-3xl
                                         shadow-xl
@@ -415,7 +469,7 @@ export default function AboutPage() {
 
                             {/* Content journey*/}
                             <div>
-                                <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-fulltext-smfont-medium">
+                                <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-fulltext-smfont-medium">
                                     Growth Is a Journey 
                                 </span>
 
@@ -434,143 +488,10 @@ export default function AboutPage() {
                 </section>
 
             {/* Why Choose Us */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4">
-
-                    <div className="text-center mb-14">
-                        <h2 className="text-4xl font-bold text-slate-800">
-                            Why Choose Us
-                        </h2>
-
-                        <p className="mt-4 text-slate-600 max-w-3xl mx-auto">
-                            We help businesses find reliable Virtual Assistants and remote
-                            professionals while creating meaningful opportunities for talented
-                            individuals. Our focus is on quality, efficiency, and long-term success.
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                        {/* Card 1 */}
-                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">⭐</div>
-
-                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                                Pre-Screened Talent
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed">
-                                Every applicant undergoes an initial screening process to
-                                ensure employers receive qualified and job-ready candidates.
-                            </p>
-                        </div>
-
-                        {/* Card 2 */}
-                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">⚡</div>
-
-                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                                Faster Hiring Process
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed">
-                                We streamline recruitment by sourcing, screening, and
-                                shortlisting candidates so businesses can hire faster.
-                            </p>
-                        </div>
-
-                        {/* Card 3 */}
-                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">🎯</div>
-
-                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                                Quality Matching
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed">
-                                We focus on matching candidates based on skills,
-                                experience, and company culture for long-term success.
-                            </p>
-                        </div>
-
-                        {/* Card 4 */}
-                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">🤝</div>
-
-                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                                Dedicated Support
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed">
-                                We provide personalized assistance to both employers
-                                and job seekers throughout the recruitment journey.
-                            </p>
-                        </div>
-
-                        {/* Card 5 */}
-                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">🌍</div>
-
-                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                                Remote Workforce Expertise
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed">
-                                We specialize in Virtual Assistant and remote staffing
-                                solutions, helping businesses build effective remote teams.
-                            </p>
-                        </div>
-
-                        {/* Card 6 */}
-                        <div className="bg-slate-50 rounded-3xl p-8 shadow-sm hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">📈</div>
-
-                            <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                                Long-Term Partnerships
-                            </h3>
-
-                            <p className="text-slate-600 leading-relaxed">
-                                Our goal is to create successful relationships that
-                                benefit both employers and professionals for years to come.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
+                <Whychooseus />
 
             {/* CTA */}
-            <section className="py-20 bg-[#111111]">
-                <div className="max-w-4xl mx-auto px-4 text-center text-white">
-
-                    <h2 className="text-4xl font-bold mb-6">
-                        Ready to Build Your Team or Advance Your Career?
-                    </h2>
-
-                    <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                        Whether you're looking for exceptional Virtual Assistant talent
-                        or searching for your next career opportunity, we're here to help.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <a
-                            href="/services/employers"
-                            className="px-8 py-4 bg-blue-600 rounded-xl hover:bg-blue-700 transition"
-                        >
-                            Hire Talent
-                        </a>
-
-                        <a
-                            href="/careers"
-                            className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-100 transition"
-                        >
-                            Browse Jobs
-                        </a>
-                    </div>
-
-                </div>
-            </section>
+            <Ctaforboth />
 
         </MainLayout>
     );

@@ -18,7 +18,7 @@ export default function CareerPage() {
             <section className="relative h-[400px] flex items-center justify-center">
 
                 <img
-                    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600"
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/careers.png`}
                     alt="career"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -146,10 +146,10 @@ export default function CareerPage() {
                                                     text-center
                                                     px-6
                                                     py-3
-                                                    bg-blue-600
+                                                    bg-slate-900
                                                     text-white
                                                     rounded-xl
-                                                    hover:bg-blue-700
+                                                    hover:bg-slate-700
                                                     transition
                                                     font-medium
                                                 "

@@ -1,5 +1,6 @@
 import MainLayout from "@/components/layout/MainLayout";
 import { Link } from "@inertiajs/react";
+import Whychooseus from "@/components/sections/whychooseus";
 
 export default function EmployersPage() {
     return (
@@ -9,7 +10,7 @@ export default function EmployersPage() {
             <section className="relative h-[500px] flex items-center justify-center">
 
                 <img
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600"
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/employers.png`}
                     alt="Employers"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -48,63 +49,7 @@ export default function EmployersPage() {
             </section>
 
             {/* Benefits */}
-            <section className="py-20 bg-slate-100">
-                <div className="max-w-7xl mx-auto px-4">
-
-                    <h2 className="text-center text-4xl font-bold mb-14">
-                        Why Partner With Us?
-                    </h2>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                        <div className="bg-white rounded-2xl p-6 shadow">
-                            <h3 className="font-bold text-xl mb-3">
-                                Pre-Screened Talent
-                            </h3>
-
-                            <p className="text-slate-600">
-                                Save time by meeting qualified candidates
-                                who match your requirements.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-6 shadow">
-                            <h3 className="font-bold text-xl mb-3">
-                                Faster Hiring
-                            </h3>
-
-                            <p className="text-slate-600">
-                                Access a pool of skilled virtual assistants
-                                ready for immediate placement.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-6 shadow">
-                            <h3 className="font-bold text-xl mb-3">
-                                Flexible Staffing
-                            </h3>
-
-                            <p className="text-slate-600">
-                                Hire part-time, full-time, or project-based
-                                virtual assistants.
-                            </p>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-6 shadow">
-                            <h3 className="font-bold text-xl mb-3">
-                                Ongoing Support
-                            </h3>
-
-                            <p className="text-slate-600">
-                                We assist throughout the recruitment process
-                                to ensure successful placements.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
+            <Whychooseus />
 
             {/* Process */}
             <section className="py-20 bg-white">
@@ -117,22 +62,22 @@ export default function EmployersPage() {
                     <div className="grid md:grid-cols-4 gap-8 text-center">
 
                         <div>
-                            <div className="text-5xl font-bold text-blue-600">1</div>
+                            <div className="text-5xl font-bold text-slate-900">1</div>
                             <h3 className="font-bold mt-4">Tell Us Your Needs</h3>
                         </div>
 
                         <div>
-                            <div className="text-5xl font-bold text-blue-600">2</div>
+                            <div className="text-5xl font-bold text-slate-900">2</div>
                             <h3 className="font-bold mt-4">Candidate Matching</h3>
                         </div>
 
                         <div>
-                            <div className="text-5xl font-bold text-blue-600">3</div>
+                            <div className="text-5xl font-bold text-slate-900">3</div>
                             <h3 className="font-bold mt-4">Interview & Selection</h3>
                         </div>
 
                         <div>
-                            <div className="text-5xl font-bold text-blue-600">4</div>
+                            <div className="text-5xl font-bold text-slate-900">4</div>
                             <h3 className="font-bold mt-4">Hire & Onboard</h3>
                         </div>
 
@@ -142,7 +87,7 @@ export default function EmployersPage() {
             </section>
 
             {/* CTA */}
-            <section className="py-20 bg-slate-900 text-white">
+            <section className="py-20 bg-[#4B4843] text-white">
                 <div className="max-w-4xl mx-auto text-center px-4">
 
                     <h2 className="text-4xl font-bold">
@@ -155,7 +100,7 @@ export default function EmployersPage() {
 
                     <Link
                         href="/contact"
-                        className="inline-block mt-8 px-8 py-4 bg-blue-600 rounded-xl hover:bg-blue-700"
+                        className="inline-block mt-8 px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-300"
                     >
                         Request Talent
                     </Link>

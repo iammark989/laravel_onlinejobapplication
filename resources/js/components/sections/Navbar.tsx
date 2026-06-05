@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link,usePage } from "@inertiajs/react";
 import { Menu, X, ChevronDown,Package } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -30,6 +31,21 @@ export default function Navbar() {
         : `
             text-slate-200
             hover:text-[#D4AF37]
+          `;
+    const navLinkClassFor = (path: string) =>
+    url.startsWith(path)
+        ? `
+            text-[#D4AF37]
+            font-medium
+            border-b-2
+            border-[#D4AF37]
+            pb-1
+          `
+        : `
+            text-slate-200
+            hover:text-[#D4AF37]
+            transition
+            font-medium
           `;
 
      
@@ -90,7 +106,7 @@ export default function Navbar() {
                             <div className="relative">
                             <button
                                 onClick={() => setItemsOpen(!itemsOpen)}
-                                className={`${navLinkClass("/services")} flex items-center`}
+                                className={`${navLinkClassFor("/services")} flex items-center`}
                             >
                                 Services
                                 <ChevronDown
@@ -101,34 +117,90 @@ export default function Navbar() {
                                 />
                             </button>
 
+                                    <AnimatePresence>
                             {itemsOpen && (
-                                <div
-                                className="
-                                    absolute
-                                    right-0
-                                    mt-2
-                                    w-64
-                                    bg-white
-                                    border
-                                    rounded-xl
-                                    shadow-lg
-                                    z-50
-                                "
-                                >
+                                 <motion.div
+                                        initial={{
+                                            opacity: 0,
+                                            y: -10,
+                                            scale: 0.95,
+                                        }}
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0,
+                                            scale: 1,
+                                        }}
+                                        exit={{
+                                            opacity: 0,
+                                            y: -10,
+                                            scale: 0.95,
+                                        }}
+                                        transition={{
+                                            duration: 0.2,
+                                        }}
+                                        className="
+                                            absolute
+                                            right-0
+                                            mt-2
+                                            w-72
+                                            bg-white
+                                            border
+                                            rounded-xl
+                                            shadow-xl
+                                            z-50
+                                            text-[#111111]
+                                            overflow-hidden
+                                        "
+                                    >
                                 <Link
-                                    href="/items"
+                                    href="/services/executive-virtual-assistant"
                                     className="
-                                    flex items-center gap-3
+                                    flex items-center
                                     px-4 py-3
-                                    hover:bg-gray-50
+                                    hover:bg-[#B9B9A6] rounded-xl
                                     "
                                 >
-                                    <Package size={18} />
-                                    Virtual Assistant
+                                    Executive Virtual Assistant
                                 </Link>
                                 
-                                </div>
+                                <Link
+                                    href="/services/general-administrative-virtual-assistant"
+                                    className="
+                                    flex items-center
+                                    px-4 py-3
+                                    hover:bg-[#B9B9A6] rounded-xl
+                                    "
+                                >
+                                    General Administrative Virtual Assistant
+                                </Link>
+
+                                <Link
+                                    href="/services/financial-bookkeeping-virtual-assistant"
+                                    className="
+                                    flex items-center
+                                    px-4 py-3
+                                    hover:bg-[#B9B9A6] rounded-xl
+                                    "
+                                >
+                                    Financial/Bookkeeping Virtual Assistant
+                                </Link>
+
+                                <Link
+                                    href="/services/ecommerce-amazon-virtual-assistant"
+                                    className="
+                                    flex items-center
+                                    px-4 py-3
+                                    hover:bg-[#B9B9A6] rounded-xl
+                                    "
+                                >
+                                    E-Commerce/Amazon Virtual Assistant
+                                </Link>
+                                
+
+                                </motion.div>
+                                
                             )}
+                            </AnimatePresence>
                             </div>
 
                         <Link
@@ -228,18 +300,49 @@ export default function Navbar() {
                         }`}
                         />
                     </button>
-
+                            <AnimatePresence>
+                                 
               {itemsOpen && (
-                <div className="ml-4 flex flex-col">
-                  <Link
-                    href="/services/virtual-assistant"
-                    className="text-slate-200 hover:text-[#D4AF37]"
-                  >
-                    Virtual Assisant
-                  </Link>
+                <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="ml-4 flex flex-col overflow-hidden"
+        >
+                    <Link
+                        href="/services/executive-virtual-assistant"
+                        className="px-4 py-3 text-slate-200 hover:text-[#D4AF37] hover:bg-[#111111] rounded-md"
+                    >
+                        Executive Virtual Assistant
+                    </Link>
 
-                </div>
+                    <Link
+                        href="/services/general-administrative-virtual-assistant"
+                        className="px-4 py-3 text-slate-200 hover:text-[#D4AF37] hover:bg-[#111111] rounded-md"
+                    >
+                        General Administrative Virtual Assistant
+                    </Link>
+
+                    <Link
+                        href="/services/financial-bookkeeping-virtual-assistant"
+                        className="px-4 py-3 text-slate-200 hover:text-[#D4AF37] hover:bg-[#111111] rounded-md"
+                    >
+                        Financial/Bookkeeping Virtual Assistant
+                    </Link>
+
+                    <Link
+                        href="/services/ecommerce-amazon-virtual-assistant"
+                        className="px-4 py-3 text-slate-200 hover:text-[#D4AF37] hover:bg-[#111111] rounded-md"
+                    >
+                        E-Commerce/Amazon Virtual Assistant
+                    </Link>
+                </motion.div>
+                
               )}
+              
+              </AnimatePresence>
+
                         <Link
                             href="/about"
                             onClick={() => setOpen(false)}

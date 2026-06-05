@@ -20,9 +20,23 @@ Route::post('/careers/apply/{slug}',[UserController::class,'sendApplication'])->
 Route::get('/services/employers', function (){
     return Inertia::render('employer');
 })->name('employers');
-Route::get('/services/job-seekers', function (){
-    return Inertia::render('jobseekers');
-})->name('jobseekers');
+
+            //SERVICES
+Route::get('/services/executive-virtual-assistant', function (){
+    return Inertia::render('services/executiveva');
+})->name('executiveva');
+
+Route::get('/services/general-administrative-virtual-assistant', function (){
+    return Inertia::render('services/generaladminva');
+})->name('generaladminva');
+
+Route::get('/services/financial-bookkeeping-virtual-assistant', function (){
+    return Inertia::render('services/financebookkeepingva');
+})->name('financebookkeepingva');
+
+Route::get('/services/ecommerce-amazon-virtual-assistant', function (){
+    return Inertia::render('services/ecommerceamazonva');
+})->name('ecommerceamazonva');
 
 Route::get('/contact', function () {
     return Inertia::render('contact');

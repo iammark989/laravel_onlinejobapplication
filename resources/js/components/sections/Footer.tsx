@@ -9,13 +9,13 @@ import {
 
 export default function Footer() {
     return (
-        <footer className="bg-slate-900 text-white mt-20">
+        <footer className="bg-[#1F1F1D] text-white mt-20">
             <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-10">
 
                 {/* Company */}
                 <div>
                     <h2 className="text-2xl font-bold mb-4">
-                        GetStaffed
+                       GetStaffed by BKW
                     </h2>
 
                     <p className="text-slate-300 leading-relaxed">
@@ -38,7 +38,7 @@ export default function Footer() {
 
                         <div className="flex items-center gap-3">
                             <Mail size={18} />
-                            <span>recruitment.getstaffed@gmail.com</span>
+                            <span>info@getstaffedbybkw.com</span>
                         </div>
 
                         <div className="flex items-center gap-3">
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
 
             <div className="border-t border-slate-700 py-5 text-center text-sm text-slate-400">
-                © 2026 GetStaffed. All rights reserved.
+                © 2026 My Company. All rights reserved.
             </div>
         </footer>
     );

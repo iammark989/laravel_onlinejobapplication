@@ -9,8 +9,8 @@ export default function HomePage() {
             <section className="relative h-[600px] flex items-center justify-center">
 
                 <img
-                    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600"
-                    alt="Virtual Assistant Recruitment"
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/home.png`}
+                    alt="getstaffed home bg"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
 
@@ -29,14 +29,14 @@ export default function HomePage() {
                     <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
                         <Link
                             href="/careers"
-                            className="px-8 py-4 bg-blue-600 rounded-xl hover:bg-blue-700 transition font-semibold"
+                            className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-300 transition font-semibold"
                         >
                             Browse Jobs
                         </Link>
 
                         <Link
                             href="/contact"
-                            className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-100 transition font-semibold"
+                            className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-300 transition font-semibold"
                         >
                             Hire Talent
                         </Link>
@@ -82,19 +82,7 @@ export default function HomePage() {
 
                         {/* Employers */}
                         <div className="bg-white rounded-3xl shadow-lg p-8">
-
-                            <div className="mb-6 flex justify-center">
-                                <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/employers.png`}
-                                    alt="Employers"
-                                    className="
-                                        w-full
-                                        max-w-[220px]
-                                        h-auto
-                                        object-contain
-                                    "
-                                />
-                            </div>
+                            <div className="text-5xl mb-5">🏢</div>
 
                             <h3 className="text-2xl font-bold text-slate-800">
                                 For Employers
@@ -108,37 +96,15 @@ export default function HomePage() {
 
                             <Link
                                 href="/services/employers"
-                                className="
-                                    inline-block
-                                    mt-6
-                                    px-6
-                                    py-3
-                                    bg-blue-600
-                                    text-white
-                                    rounded-xl
-                                    hover:bg-blue-700
-                                    transition
-                                "
+                                className="inline-block mt-6 px-6 py-3 bg-slate-900 text-white rounded-xl hover:bg-slate-700 transition"
                             >
                                 Learn More
                             </Link>
-
                         </div>
 
                         {/* Job Seekers */}
                         <div className="bg-white rounded-3xl shadow-lg p-8">
-                            <div className="mb-6 flex justify-center">
-                                <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/jobseekers.png`}
-                                    alt="Employers"
-                                    className="
-                                        w-full
-                                        max-w-[220px]
-                                        h-auto
-                                        object-contain
-                                    "
-                                />
-                            </div>
+                            <div className="text-5xl mb-5">💼</div>
 
                             <h3 className="text-2xl font-bold text-slate-800">
                                 For Job Seekers
@@ -152,7 +118,7 @@ export default function HomePage() {
 
                             <Link
                                 href="/services/job-seekers"
-                                className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+                                className="inline-block mt-6 px-6 py-3 bg-slate-900 text-white rounded-xl hover:bg-slate-700 transition"
                             >
                                 Learn More
                             </Link>
@@ -167,7 +133,7 @@ export default function HomePage() {
             <section className="py-20 bg-white">
                 <div className="max-w-5xl mx-auto px-4">
 
-                    <div className="bg-slate-900 rounded-3xl p-10 md:p-14 text-center text-white">
+                    <div className="bg-[#4B4843] rounded-3xl p-10 md:p-14 text-center text-white">
 
                         <h2 className="text-4xl font-bold">
                             Ready to Get Started?
@@ -183,14 +149,14 @@ export default function HomePage() {
 
                             <Link
                                 href="/careers"
-                                className="px-8 py-4 bg-blue-600 rounded-xl hover:bg-blue-700 transition"
+                                className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-200 transition"
                             >
                                 View Open Positions
                             </Link>
 
                             <Link
                                 href="/contact"
-                                className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-100 transition"
+                                className="px-8 py-4 bg-white text-slate-900 rounded-xl hover:bg-slate-200 transition"
                             >
                                 Contact Us
                             </Link>
