@@ -11,8 +11,8 @@ export default function AboutPage() {
             <section className="relative h-[400px] flex items-center justify-center">
 
                 <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600"
-                    alt="about"
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/aboutus.webp`}
+                    alt="about getstaffed"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
                             {/* Image */}
                             <div>
                                 <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/aboutus.png`}
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/aboutus.webp`}
                                     alt="Founders discussing ideas"
                                     className="
                                         w-full
@@ -188,7 +188,7 @@ export default function AboutPage() {
                            
                             >
                                 <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourmission.png`}
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourmission.webp`}
                                     alt="Our Mission"
                                     className="
                                         rounded-3xl
@@ -253,7 +253,7 @@ export default function AboutPage() {
                                 
                                     >
                                     <img
-                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourvision.png`}
+                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ourvision.webp`}
                                         alt="Our Vision"
                                         className="
                                             rounded-3xl
@@ -279,7 +279,7 @@ export default function AboutPage() {
                            
                             >
                                 <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/webelieve.png`}
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/webelieve.webp`}
                                     alt="What We Believe"
                                     className="
                                         rounded-3xl
@@ -341,7 +341,7 @@ export default function AboutPage() {
                                 
                                     >
                                     <img
-                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/talent.png`}
+                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/talent.webp`}
                                         alt="Talent Has No Boundaries"
                                         className="
                                             rounded-3xl
@@ -367,7 +367,7 @@ export default function AboutPage() {
                            
                             >
                                 <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/partnership.png`}
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/partnership.webp`}
                                     alt="Partnerships Matter"
                                     className="
                                         rounded-3xl
@@ -428,7 +428,7 @@ export default function AboutPage() {
                                 
                                     >
                                     <img
-                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/standard.png`}
+                                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/standard.webp`}
                                         alt="Excellence Is the Standard"
                                         className="
                                             rounded-3xl
@@ -454,7 +454,7 @@ export default function AboutPage() {
                            
                             >
                                 <img
-                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/journey.png`}
+                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/journey.webp`}
                                     alt="Growth Is a Journey"
                                     className="
                                         rounded-3xl

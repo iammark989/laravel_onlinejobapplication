@@ -18,7 +18,7 @@ export default function CareerPage() {
             <section className="relative h-[400px] flex items-center justify-center">
 
                 <img
-                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/careers.png`}
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/careers.webp`}
                     alt="career"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

@@ -9,7 +9,7 @@ export default function JobSeekersPage() {
             <section className="relative h-[500px] flex items-center justify-center">
 
                 <img
-                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/jobseekers.png`}
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/jobseekers.webp`}
                     alt="Job Seekers"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

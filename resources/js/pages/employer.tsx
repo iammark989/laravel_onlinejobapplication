@@ -10,7 +10,7 @@ export default function EmployersPage() {
             <section className="relative h-[500px] flex items-center justify-center">
 
                 <img
-                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/employers.png`}
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/employers.webp`}
                     alt="Employers"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

@@ -72,7 +72,7 @@ export default function PositionPage() {
             {/* Image */}
             <div>
               <img
-                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/financebookkeepingva.png`}
+                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/financebookkeepingva.webp`}
                 alt="Financial & Bookkeeping Virtual Assistant"
                 className="
                   w-full

@@ -14,14 +14,32 @@ export default function Footer() {
 
                 {/* Company */}
                 <div>
-                    <h2 className="text-2xl font-bold mb-4">
-                       GetStaffed by BKW
-                    </h2>
+                <div className="flex items-center gap-4 mb-5">
+                    <img
+                        src={`${import.meta.env.VITE_IMAGE_URL}/files/images/getstaffed_logo.webp`}
+                        alt="GetStaffed Logo"
+                        className="
+                            h-12
+                            w-auto
+                            object-contain
+                            shrink-0
+                        "
+                    />
+                    <div>
+                        <h2 className="text-2xl font-bold text-white leading-none">
+                            GetStaffed
+                        </h2>
 
-                    <p className="text-slate-300 leading-relaxed">
-                        Professional business solutions and modern digital services.
-                    </p>
+                        <p className="text-sm text-[#D4AF37] tracking-wider uppercase">
+                            by BKW
+                        </p>
+                    </div>
                 </div>
+
+                <p className="text-slate-300 leading-relaxed">
+                    Connecting businesses with exceptional virtual talent and helping professionals build meaningful remote careers.
+                </p>
+            </div>
 
                 {/* Contact */}
                 <div>

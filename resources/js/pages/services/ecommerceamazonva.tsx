@@ -72,7 +72,7 @@ export default function PositionPage() {
             {/* Image */}
             <div>
               <img
-                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ecommerceamazonva.png`}
+                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ecommerceamazonva.webp`}
                 alt="E-Commerce & Amazon Virtual Assistant"
                 className="
                   w-full

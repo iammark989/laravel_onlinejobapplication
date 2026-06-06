@@ -9,7 +9,7 @@ export default function HomePage() {
             <section className="relative h-[600px] flex items-center justify-center">
 
                 <img
-                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/home.png`}
+                    src={`${import.meta.env.VITE_IMAGE_URL}/files/images/home.webp`}
                     alt="getstaffed home bg"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

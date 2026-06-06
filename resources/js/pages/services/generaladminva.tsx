@@ -72,7 +72,7 @@ export default function PositionPage() {
             {/* Image */}
             <div>
               <img
-                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/generaladminva.png`}
+                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/generaladminva.webp`}
                 alt="General Administrative Virtual Assistant"
                 className="
                   w-full

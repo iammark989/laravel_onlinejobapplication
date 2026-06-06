@@ -54,7 +54,7 @@ export default function Navbar() {
     return (
         <header
         style={{
-        backgroundImage: `url(${import.meta.env.VITE_IMAGE_URL}/files/images/dark-texture.png)`
+        backgroundImage: `url(${import.meta.env.VITE_IMAGE_URL}/files/images/dark-texture.webp)`
         }}
             className="
                 fixed
@@ -77,15 +77,15 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="flex items-center shrink-0"
+                        className="flex items-center shrink-0 py-2"
                     >
                         <img
-                            src={`${import.meta.env.VITE_IMAGE_URL}/files/images/getstaffed_logo_name.png`}
+                            src={`${import.meta.env.VITE_IMAGE_URL}/files/images/GetStaffed_byBKW.webp`}
                             alt="GetStaffed"
                             className="
-                                h-14
-                                sm:h-16
-                                md:h-20
+                                h-10
+                                sm:h-12
+                                md:h-14
                                 w-auto
                                 object-contain
                             "
