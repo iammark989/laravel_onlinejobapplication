@@ -41,7 +41,8 @@ Route::get('/services/ecommerce-amazon-virtual-assistant', function (){
 Route::get('/contact', function () {
     return Inertia::render('contact');
 })->name('contact');
-Route::post('/sendmessage',[ContactController::class,'sendmessage'])->name('sendmessage');
+Route::post('/contact-us',[ContactController::class,'employermessage'])->name('employermessage');
+
 
 Route::get('/about', function () {
     return Inertia::render('about');
@@ -64,6 +65,9 @@ Route::get('/admin/profile',function (){
 Route::get('/admin/dashboard',[QueryController::class,'goToAdminDashboard'])->name('admindashboard')->middleware('adminonly');
 
 Route::get('/admin/careers',[QueryController::class,'goToAdminCareers'])->name('admincareers')->middleware('adminonly');
+
+Route::get('/admin/employers-messages',[UserController::class,'goToEmployersMessageList'])->name('adminemployersmessagelist')->middleware('adminonly');
+Route::get('/admin/employers-requestaaaa',[UserController::class,'goToEmployersRequest'])->name('adminemployersrequest')->middleware('adminonly');
 
     // USER CONTROLLERS
 Route::post('/admin/loginattempt',[UserController::class,'login'])->name('login');

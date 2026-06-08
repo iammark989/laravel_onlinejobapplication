@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MainLayout from "@/components/layout/MainLayout";
 import { router } from "@inertiajs/react";
-
+import Swal from "sweetalert2";
 
 const ContactUs: React.FC = () => {
   const [form, setForm] = useState({
@@ -51,6 +51,15 @@ const ContactUs: React.FC = () => {
           timeline: "",
           message: "",
         });
+
+         Swal.fire({
+                      icon: "success",
+                      title: "Inquiry Submitted!",
+                      text: "Thank you for your interest in our recruitment services. Our team will review your requirements and contact you soon.",
+                      showConfirmButton: true,
+                      confirmButtonColor: "#D4AF37",
+                  });
+
       },
     });
   };
@@ -74,9 +83,9 @@ const ContactUs: React.FC = () => {
             <h2 className="font-semibold text-lg">1. Contact <span className="text-red-500">*</span></h2>
 
             <div className="grid md:grid-cols-3 gap-4">
-              <input name="name" placeholder="Full Name" className="input" onChange={handleChange} />
-              <input name="email" placeholder="Email" className="input" onChange={handleChange} />
-              <input name="contact" placeholder="Contact Number" className="input" onChange={handleChange} />
+              <input name="name" placeholder="Full Name" className="input" value={form.name} onChange={handleChange} required />
+              <input name="email" placeholder="Email" className="input" value={form.email} onChange={handleChange} required/>
+              <input name="contact" placeholder="Contact Number" value={form.contact} className="input" onChange={handleChange} required/>
             </div>
           </div>
 
@@ -85,18 +94,18 @@ const ContactUs: React.FC = () => {
             <h2 className="font-semibold text-lg">2. Company <span className="text-red-500">*</span></h2>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <input name="company_name" placeholder="Company Name" className="input" onChange={handleChange} />
-              <input name="company_website" placeholder="Company Website" className="input" onChange={handleChange} />
+              <input name="company_name" placeholder="Company Name" className="input" value={form.company_name} onChange={handleChange} required/>
+              <input name="company_website" placeholder="Company Website" className="input" value={form.company_website} onChange={handleChange} />
 
-              <select name="company_size" className="input" onChange={handleChange}>
+              <select name="company_size" className="input" value={form.company_size} onChange={handleChange} required>
                 <option value="">Company Size</option>
-                <option>1-10</option>
-                <option>11-50</option>
-                <option>51-200</option>
-                <option>200+</option>
+                <option value="1-10">1-10</option>
+                <option value="11-50">11-50</option>
+                <option value="51-200">51-200</option>
+                <option value="200+">200+</option>
               </select>
 
-              <input name="industry" placeholder="Industry" className="input" onChange={handleChange} />
+              <input name="industry" placeholder="Industry" value={form.industry} className="input" onChange={handleChange} required/>
             </div>
           </div>
 
@@ -105,30 +114,30 @@ const ContactUs: React.FC = () => {
             <h2 className="font-semibold text-lg">3. Hiring Details <span className="text-red-500">*</span></h2>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <input name="position" placeholder="Position / Role" className="input" onChange={handleChange} />
+              <input name="position" placeholder="Position / Role" className="input" value={form.position} onChange={handleChange} required/>
 
-              <select name="category" className="input" onChange={handleChange}>
+              <select name="category" className="input" value={form.category} onChange={handleChange} required>
                 <option value="">Category</option>
-                <option>IT / Software</option>
-                <option>Admin / VA</option>
-                <option>Marketing</option>
-                <option>Finance</option>
-                <option>Customer Support</option>
+                <option value="IT OR SOFTWARE">IT / Software</option>
+                <option value="ADMIN OR VA">Admin / VA</option>
+                <option value="MARKETING">Marketing</option>
+                <option value="FINANCE">Finance</option>
+                <option value="CUSTOMER SUPPORT">Customer Support</option>
               </select>
 
-              <select name="job_type" className="input" onChange={handleChange}>
+              <select name="job_type" className="input" value={form.job_type} onChange={handleChange} required>
                 <option value="">Job Type</option>
-                <option>Full-time</option>
-                <option>Part-time</option>
-                <option>Freelance</option>
-                <option>Project-based</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Freelance">Freelance</option>
+                <option value="Project-based">Project-based</option>
               </select>
 
-              <select name="experience_level" className="input" onChange={handleChange}>
+              <select name="experience_level" className="input" value={form.experience_level} onChange={handleChange} required>
                 <option value="">Experience Level</option>
-                <option>Entry</option>
-                <option>Mid</option>
-                <option>Senior</option>
+                <option value="Entry">Entry</option>
+                <option value="Mid">Mid</option>
+                <option value="Senior">Senior</option>
               </select>
 
               {/*<select name="work_setup" className="input" onChange={handleChange}>
@@ -148,14 +157,14 @@ const ContactUs: React.FC = () => {
             <h2 className="font-semibold text-lg">4. Budget & Timeline <span className="text-red-500">*</span></h2>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <input name="salary_range" placeholder="Budget / Salary Range" className="input" onChange={handleChange} />
+              <input name="salary_range" placeholder="Budget / Salary Range" value={form.salary_range} className="input" onChange={handleChange} required/>
 
-              <select name="timeline" className="input" onChange={handleChange}>
+              <select name="timeline" className="input" onChange={handleChange} required>
                 <option value="">Hiring Timeline</option>
-                <option>Immediate</option>
-                <option>1 week</option>
-                <option>1 month</option>
-                <option>Flexible</option>
+                <option value="Immediate">Immediate</option>
+                <option value="1 week">1 week</option>
+                <option value="1 month">1 month</option>
+                <option value="Flexible">Flexible</option>
               </select>
             </div>
           </div>
@@ -168,7 +177,9 @@ const ContactUs: React.FC = () => {
               name="message"
               placeholder="Tell us more about your hiring needs..."
               className="input h-32"
+              value={form.message}
               onChange={handleChange}
+              required
             />
           </div>
 

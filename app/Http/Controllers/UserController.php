@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employersmessage;
 use App\Models\Job;
 use App\Models\Jobapplication;
 use Illuminate\Http\Request;
@@ -9,10 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
-
+    //  ADMIN //
     // LOGIN ATTEMPT //
     public function login(Request $request){
         $incomingFields = $request->validate([
@@ -39,6 +41,20 @@ class UserController extends Controller
 
     return redirect()->intended('/admin/login');
     }
+
+    public function goToEmployersMessageList(){
+        $messageList = Employersmessage::orderBy('created_at','ASC')->get();
+        return Inertia::render('admin/employersmessagelist',[
+            'messages' => $messageList,
+        ]);
+    }
+
+     public function goToEmployersRequestaaaa(){
+        return Inertia::render('admin/employersrequest');
+    }
+
+
+
 
     //JOB APPLICATION
     public function sendApplication(Request $request,$slug){

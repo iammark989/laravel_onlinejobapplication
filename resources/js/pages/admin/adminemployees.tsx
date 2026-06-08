@@ -35,6 +35,7 @@ const DashboardPage: React.FC = () => {
   return (
 
     <AdminLayout>
+   
         <section className="w-full">
     <div className="min-h-screen bg-gray-100 p-4 md:p-8">
       {/* Header */}
@@ -138,6 +139,7 @@ const DashboardPage: React.FC = () => {
       </div>
     </div>
     </section>
+
    </AdminLayout>
   );
   
