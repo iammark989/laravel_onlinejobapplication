@@ -24,5 +24,8 @@ class Employersmessage extends Model
             'salary_range',
             'timeline',
             'message',
+            'privacy_consent',
+            'privacy_consent_at',
+            'consent_ip',
     ];
 }

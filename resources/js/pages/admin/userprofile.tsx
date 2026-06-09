@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminLayout from "@/components/layout/AdminLayout";
+import AdminLayout from "@/components/layout/adminLayout";
 import { usePage, router } from "@inertiajs/react";
 import { User, Mail, Shield, Lock } from "lucide-react";
 

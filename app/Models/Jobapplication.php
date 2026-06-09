@@ -25,7 +25,7 @@ class Jobapplication extends Model
         'email',
         'expected_salary',
         'employment_status',
-        'resume_path',
+        'resume',
         'application_status',
         'interview_date',
         'interview_notes',
@@ -34,6 +34,9 @@ class Jobapplication extends Model
         'archived_at',
         'admin_notes',
         'reviewed_by',
+        'privacy_consent',
+        'privacy_consent_at',
+        'consent_ip',
         ];
 
         public function user(){

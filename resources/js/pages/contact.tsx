@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import MainLayout from "@/components/layout/MainLayout";
+import MainLayout from "@/components/layout/mainLayout";
 import { router } from "@inertiajs/react";
 import Swal from "sweetalert2";
 
+
 const ContactUs: React.FC = () => {
+  
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -19,6 +21,7 @@ const ContactUs: React.FC = () => {
     salary_range: "",
     timeline: "",
     message: "",
+    privacy_consent:false,
   });
 
   const handleChange = (
@@ -50,15 +53,22 @@ const ContactUs: React.FC = () => {
           salary_range: "",
           timeline: "",
           message: "",
+          privacy_consent:false,
         });
 
          Swal.fire({
-                      icon: "success",
-                      title: "Inquiry Submitted!",
-                      text: "Thank you for your interest in our recruitment services. Our team will review your requirements and contact you soon.",
-                      showConfirmButton: true,
-                      confirmButtonColor: "#D4AF37",
-                  });
+              icon: "success",
+              title: "Inquiry Submitted!",
+              text: "You will be redirected shortly...",
+              showConfirmButton: true,
+              confirmButtonColor: "#D4AF37",
+              timer: 10000,
+              timerProgressBar: true,
+          }).then((result) => {
+              if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+                  window.location.href = "/about";
+              }
+          });
 
       },
     });
@@ -182,6 +192,40 @@ const ContactUs: React.FC = () => {
               required
             />
           </div>
+
+            {/** T&C - PRIVACY POLICY */}
+            <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    required
+                    className="mt-1"
+                    name='privacy_consent'
+                    checked={form.privacy_consent}
+                    onChange={(e) => setForm({...form, privacy_consent: e.target.checked})}
+                  />
+
+                  <label htmlFor="consent" className="text-sm text-gray-600">
+                  I have read and agree to the{" "}
+                  <a
+                    href="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                    >
+                 Privacy Policy
+                  </a>{" "}
+                    and{" "}
+                  <a
+                    href="/terms-and-conditions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                    >
+                  Terms & Conditions
+                  </a>.
+                  </label>
+              </div>          
 
           {/* BUTTON */}
           <button

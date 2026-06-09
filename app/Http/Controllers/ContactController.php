@@ -20,6 +20,18 @@ class ContactController extends Controller
         return redirect()->route('contact');
     }
 
+    //EMPLOYERS INQUIRY / MESSAGE
+     public function address()
+    {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        return $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
+    } else {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+    }
+
     public function employermessage(Request $request){
             $incomingFields = $request->validate([
             'name' => 'required|string|max:100',
@@ -36,7 +48,10 @@ class ContactController extends Controller
             'salary_range' => 'required|string|max:30',
             'timeline' =>'required|string|max:30',
             'message' =>'required|string|max:30',
+            'privacy_consent' => 'required|boolean|accepted',
             ]);
+            $incomingFields['privacy_consent_at'] = now();
+            $incomingFields['consent_ip'] = $this->address();
 
             Employersmessage::create($incomingFields);
 

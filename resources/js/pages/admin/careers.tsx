@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import AdminLayout from "@/components/layout/AdminLayout";
+import AdminLayout from "@/components/layout/adminLayout";
 import {router,usePage,Link} from "@inertiajs/react";
 import Swal from "sweetalert2";
 ;
@@ -79,6 +79,8 @@ const { flash } = usePage().props as any;
 
   });
 
+      const { errors } = usePage().props;
+
   //const{errorMsg,setErrorMsg} = useState("");
 
    const handleSubmit = (e: React.FormEvent) => {
@@ -126,7 +128,7 @@ const { flash } = usePage().props as any;
                 {/* Job Title */}
                 <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Job Title
+                    Job Title <span className="text-red-500"> *</span>
                 </label>
 
                 <input
@@ -143,7 +145,7 @@ const { flash } = usePage().props as any;
                 {/* Employment Type */}
                 <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Employment Type
+                    Employment Type <span className="text-red-500"> *</span>
                 </label>
 
                 <select
@@ -163,7 +165,7 @@ const { flash } = usePage().props as any;
                 {/* Work Setup */}
                 <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Work Setup
+                    Work Setup <span className="text-red-500"> *</span>
                 </label>
 
                 <select
@@ -183,7 +185,7 @@ const { flash } = usePage().props as any;
                 {/* Location */}
                 <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Location
+                    Location <span className="text-red-500"> *</span>
                 </label>
 
                 <input
@@ -232,7 +234,12 @@ const { flash } = usePage().props as any;
                 {/* Expiration Date */}
                 <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Expiration Date
+                    Expiration Date <span className="text-red-500"> * {/* ✅ Error message beside label */}
+                                    {errors.expires_at && (
+                                       <span>
+                                            The expiration date must be a date after today
+                                        </span>
+                                    )}</span>
                 </label>
 
                 <input
@@ -248,7 +255,7 @@ const { flash } = usePage().props as any;
                 {/* Short Description */}
                 <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Short Description
+                    Short Description <span className="text-red-500"> *</span>
                 </label>
 
                 <textarea
@@ -265,7 +272,7 @@ const { flash } = usePage().props as any;
                 {/* Full Description */}
                 <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Job Description
+                    Full Job Description <span className="text-red-500"> *</span>
                 </label>
 
                 <textarea
@@ -282,7 +289,7 @@ const { flash } = usePage().props as any;
                 {/* Requirements */}
                 <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Requirements
+                    Requirements <span className="text-red-500"> *</span>
                 </label>
 
                 <textarea
@@ -299,7 +306,7 @@ const { flash } = usePage().props as any;
                 {/* Responsibilities */}
                 <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Responsibilities
+                    Responsibilities <span className="text-red-500"> *</span>
                 </label>
 
                 <textarea
@@ -320,8 +327,8 @@ const { flash } = usePage().props as any;
                     className="
                     w-full
                     sm:w-auto
-                    bg-blue-600
-                    hover:bg-blue-700
+                    bg-slate-600
+                    hover:bg-slate-700
                     transition
                     text-white
                     font-semibold

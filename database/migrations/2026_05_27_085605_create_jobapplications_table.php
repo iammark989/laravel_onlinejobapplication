@@ -76,7 +76,7 @@ return new class extends Migration
         |--------------------------------------------------------------------------
         */
 
-        $table->string('resume_path');
+        $table->string('resume');
 
         /*
         |--------------------------------------------------------------------------
@@ -116,6 +116,11 @@ return new class extends Migration
             ->nullable()
             ->constrained('users')
             ->nullOnDelete();
+
+        /** PRIVACY CONSENT */
+        $table->boolean('privacy_consent')->default(false);
+        $table->timestamp('privacy_consent_at')->nullable();
+        $table->string('consent_ip')->nullable();
 
         $table->timestamps();
         });

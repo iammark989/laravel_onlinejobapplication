@@ -57,6 +57,16 @@ class UserController extends Controller
 
 
     //JOB APPLICATION
+     public function address()
+    {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        return $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
+    } else {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+    }
     public function sendApplication(Request $request,$slug){
          $incomingFields = $request->validate([
             'first_name' => 'required|max:255',
@@ -71,11 +81,15 @@ class UserController extends Controller
             'email' => 'required|email',
             'expected_salary' => 'required|numeric',
             'employment_status' => 'required',
-            'resume_path' => 'required|file|mimes:pdf,doc,docx|max:3072',
+            'resume' => 'required|file|mimes:pdf,doc,docx|max:3072',
+            'privacy_consent' => 'required|boolean|accepted',
          ]);
 
-         if ($request->hasFile('resume_path')) {
-            $file = $request->file('resume_path');
+         $incomingFields['consent_ip'] = $this->address();
+         $incomingFields['privacy_consent_at'] = now();
+
+         if ($request->hasFile('resume')) {
+            $file = $request->file('resume');
             $filename =
                 Str::slug($incomingFields['first_name'] . '-' . $incomingFields['last_name'])
                 . '-'
@@ -83,7 +97,7 @@ class UserController extends Controller
                 . '.'
                 . $file->getClientOriginalExtension();
             $file->move(public_path('files/resumes'), $filename);
-            $incomingFields['resume_path'] = $filename;
+            $incomingFields['resume'] = $filename;
         }
 
         $job = Job::where('slug',$slug)->firstOrFail();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminLayout from "@/components/layout/AdminLayout";
+import AdminLayout from "@/components/layout/adminLayout";
 import { router, usePage } from "@inertiajs/react";
 
 const EditCareerPage: React.FC = () => {

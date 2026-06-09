@@ -38,20 +38,27 @@ Route::get('/services/ecommerce-amazon-virtual-assistant', function (){
     return Inertia::render('services/ecommerceamazonva');
 })->name('ecommerceamazonva');
 
+        // GO TO CONTACT PAGE
 Route::get('/contact', function () {
     return Inertia::render('contact');
 })->name('contact');
 Route::post('/contact-us',[ContactController::class,'employermessage'])->name('employermessage');
-
-
+        // GO TO ABOUT PAGE
 Route::get('/about', function () {
     return Inertia::render('about');
 })->name('about');
-
+        //GO TO CAREERS APPLY PAGE
 Route::get('/careers/apply', function () {
     return Inertia::render('application');
 })->name('apply');
-
+        //GOT TO PRIVACY POLICY PAGE
+Route::get('/privacy-policy', function () {
+    return Inertia::render('privacypolicy');
+})->name('privacypolicy');
+        //GOT TO TERMS AND CONDITIONS PAGE PAGE
+Route::get('/terms-and-conditions', function () {
+    return Inertia::render('termsandconditions');
+})->name('termsandconditions');
 
             // ADMIN
 Route::get('/admin/login', function () {

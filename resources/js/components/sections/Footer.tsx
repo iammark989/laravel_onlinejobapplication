@@ -10,7 +10,7 @@ import {
 export default function Footer() {
     return (
         <footer className="bg-[#1F1F1D] text-white mt-20">
-            <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-10">
+            <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-4 gap-10">
 
                 {/* Company */}
                 <div>
@@ -51,7 +51,7 @@ export default function Footer() {
 
                         <div className="flex items-center gap-3">
                             <Phone size={18} />
-                            <span>+63 912 345 6789</span>
+                            <span>+63 927 417 4709</span>
                         </div>
 
                         <div className="flex items-center gap-3">
@@ -64,6 +64,27 @@ export default function Footer() {
                             <span>Pampanga, Philippines</span>
                         </div>
 
+                    </div>
+                </div>
+
+                {/* T & C / PRIVACY POLICY */}
+                <div>
+                    <h3 className="text-xl font-semibold mb-4">
+                        Legal
+                    </h3>
+
+                    <div className="space-y-3 text-slate-300">
+                        <div className="flex items-center gap-3">
+                        <a href="/terms-and-conditions">
+                            Terms and Conditions
+                        </a>
+                            </div>
+                            <div className="flex items-center gap-3">
+                        <a href="/privacy-policy">
+                           Privacy Policy
+                        </a>
+                        </div>
+                     
                     </div>
                 </div>
 

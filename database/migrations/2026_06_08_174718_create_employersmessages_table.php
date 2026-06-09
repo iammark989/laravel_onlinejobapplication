@@ -36,6 +36,13 @@ return new class extends Migration
 
             // message
             $table->text('message')->nullable();
+
+            //** PRIVACY CONSENT */
+
+            $table->boolean('privacy_consent')->default(false);
+            $table->timestamp('privacy_consent_at')->nullable();
+            $table->string('consent_ip')->nullable();
+            
             $table->timestamps();
         });
     }

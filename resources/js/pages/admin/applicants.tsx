@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AdminLayout from "@/components/layout/AdminLayout";
+import AdminLayout from "@/components/layout/adminLayout";
 import { Link, usePage, router } from "@inertiajs/react";
 import Swal from "sweetalert2";
 
@@ -223,7 +223,7 @@ const ApplicantsPage: React.FC = () => {
                       </button>
 
                       <a
-                        href={`${import.meta.env.VITE_IMAGE_URL}/${applicant.resume_path}`}
+                        href={`${import.meta.env.VITE_IMAGE_URL}/${applicant.resume}`}
                         target="_blank"
                         rel="noreferrer"
                         className="
@@ -294,7 +294,7 @@ const ApplicantsPage: React.FC = () => {
                 </button>
 
                 <a
-                  href={`${import.meta.env.VITE_IMAGE_URL}/${applicant.resume_path}`}
+                  href={`${import.meta.env.VITE_IMAGE_URL}/${applicant.resume}`}
                   target="_blank"
                   rel="noreferrer"
                   className="
@@ -383,7 +383,7 @@ const ApplicantsPage: React.FC = () => {
 
                 {/* Resume */}
                 <a
-                  href={`${import.meta.env.VITE_IMAGE_URL}/${selectedApplicant.resume_path}`}
+                  href={`${import.meta.env.VITE_IMAGE_URL}/${selectedApplicant.resume}`}
                   target="_blank"
                   className="block bg-green-600 text-white text-center py-2 rounded-xl"
                 >

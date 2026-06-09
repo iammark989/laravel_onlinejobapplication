@@ -1,4 +1,4 @@
-import MainLayout from "@/components/layout/MainLayout";
+import MainLayout from "@/components/layout/mainLayout";
 import { Link, usePage } from "@inertiajs/react";
 
 export default function JobDetailsPage() {
@@ -9,7 +9,7 @@ export default function JobDetailsPage() {
         <MainLayout>
 
             {/* Hero Section */}
-            <section className="bg-slate-900 text-white py-20">
+            <section className="bg-[#4B4843] text-white py-20">
                 <div className="max-w-6xl mx-auto px-4">
 
                     {/* Breadcrumb */}
@@ -80,11 +80,11 @@ export default function JobDetailsPage() {
                                 justify-center
                                 px-8
                                 py-4
-                                bg-blue-600
-                                hover:bg-blue-700
+                                bg-white
+                                hover:bg-slate-200
                                 transition
                                 rounded-xl
-                                text-white
+                                text-slate-900
                                 font-semibold
                             "
                         >
@@ -210,7 +210,7 @@ export default function JobDetailsPage() {
                             </div>
 
                             {/* Sticky Apply Card */}
-                            <div className="bg-blue-600 rounded-3xl shadow-lg p-6 text-white">
+                            <div className="bg-[#4B4843] rounded-3xl shadow-lg p-6 text-white">
 
                                 <h3 className="text-2xl font-bold mb-4">
                                     Ready to Apply?
@@ -230,10 +230,10 @@ export default function JobDetailsPage() {
                                         px-6
                                         py-4
                                         bg-white
-                                        text-blue-700
+                                        text-slate-800
                                         rounded-xl
                                         font-semibold
-                                        hover:bg-slate-100
+                                        hover:bg-slate-200
                                         transition
                                     "
                                 >

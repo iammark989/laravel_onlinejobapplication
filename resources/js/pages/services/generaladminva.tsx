@@ -1,4 +1,4 @@
-import MainLayout from "@/components/layout/MainLayout";
+import MainLayout from "@/components/layout/mainLayout";
 import { Link } from "@inertiajs/react";
 import Cta from "@/components/sections/cta";
 import Whychooseus from "@/components/sections/whychooseus";

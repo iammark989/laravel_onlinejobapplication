@@ -269,17 +269,35 @@ export default function Navbar() {
 
                 {/* Mobile Menu */}
                 {open && (
-                    <div
-                        className="
-                            md:hidden
+                    <motion.div
+                                        initial={{
+                                            opacity: 0,
+                                            y: -10,
+                                            scale: 0.95,
+                                        }}
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0,
+                                            scale: 1,
+                                        }}
+                                        exit={{
+                                            opacity: 0,
+                                            y: -10,
+                                            scale: 0.95,
+                                        }}
+                                        transition={{
+                                            duration: 0.2,
+                                        }}
+                                        className="
+                                            md:hidden
                             border-t
                             border-[#C8A44D]/20
                             py-5
                             flex
                             flex-col
                             gap-5
-                        "
-                    >
+                                        "
+                                    >
                         <Link
                             href="/"
                             onClick={() => setOpen(false)}
@@ -376,7 +394,7 @@ export default function Navbar() {
                         >
                             Find Jobs
                         </Link>
-                    </div>
+                    </motion.div>
                 )}
 
             </div>

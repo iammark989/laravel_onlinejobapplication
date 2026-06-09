@@ -1,4 +1,4 @@
-import MainLayout from '@/components/layout/MainLayout';
+import MainLayout from '@/components/layout/mainLayout';
 import { router,usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
@@ -8,6 +8,8 @@ import { PageProps as InertiaPageProps } from '@inertiajs/core';
 
 export default function JobApplicationPage() {
     const { position } = usePage().props as any;
+    const { errors } = usePage().props;
+    
     const [ form, setForm ] = useState({
         job_id : "",
         first_name: "",
@@ -22,7 +24,7 @@ export default function JobApplicationPage() {
         email: "",
         expected_salary: "",
         employment_status: "",
-        resume_path: null as File | null,
+        resume: null as File | null,
         application_status: "",
         interview_date: "",
         interview_notes: "",
@@ -31,6 +33,8 @@ export default function JobApplicationPage() {
         archived_at: "",
         admin_note: "",
         reviewed_by: "",
+        privacy_consent: false,
+
     });
 
      const [errorMsg,setErrorMsg ] = useState("");
@@ -58,7 +62,7 @@ export default function JobApplicationPage() {
         email: "",
         expected_salary: "",
         employment_status: "",
-        resume_path: null,
+        resume: null,
         application_status: "",
         interview_date: "",
         interview_notes: "",
@@ -67,6 +71,7 @@ export default function JobApplicationPage() {
         archived_at: "",
         admin_note: "",
         reviewed_by: "",
+        privacy_consent:false,
       });
     },
         });
@@ -77,7 +82,7 @@ export default function JobApplicationPage() {
         <MainLayout>
 
             {/* Hero */}
-            <section className="bg-slate-900 py-20">
+            <section className="bg-[#4B4843] py-20">
                 <div className="max-w-5xl mx-auto px-4 text-center text-white">
 
                     <h1 className="text-4xl md:text-5xl font-bold">
@@ -410,28 +415,69 @@ export default function JobApplicationPage() {
 
                                 <div>
                                     <label className="block mb-2 font-medium text-slate-700">
-                                        Upload Resume <span className="text-red-500">*</span>
+                                        Upload Resume <span className="text-red-500">pdf, doc, docx (less than 3mb) only *</span>
+                                           {/* ✅ Error message beside label */}
+                                    {errors.resume && (
+                                        <p className="text-red-500 text-sm mb-2">
+                                            {errors.resume}
+                                        </p>
+                                    )}
                                     </label>
+                                    
 
                                     <input
                                         type="file"
                                         accept=".pdf,.doc,.docx"
-                                        name='resume_path'
+                                        name='resume'
                                        // value={form.resume_path}
-                                        onChange={(e) => setForm({...form,resume_path:e.target.files?.[0] || null})}
-                                        className="w-full border rounded-xl p-4 bg-white file:mr-4 file:py-2 file:px-4 file:border-0 file:rounded-lg file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                                        onChange={(e) => setForm({...form,resume:e.target.files?.[0] || null})}
+                                        className="w-full border rounded-xl p-4 bg-white file:mr-4 file:py-2 file:px-4 file:border-0 file:rounded-lg file:bg-slate-900 file:text-white hover:file:bg-slate-700"
                                         required
                                     />
                                 </div>
 
                             </div>
 
+                                {/** T&C - PRIVACY POLICY */}
+                            <div className="flex items-start gap-3">
+                                    <input
+                                        type="checkbox"
+                                        id="consent"
+                                        required
+                                        className="mt-1"
+                                        name='privacy_consent'
+                                        checked={form.privacy_consent}
+                                        onChange={(e) => setForm({...form, privacy_consent: e.target.checked})}
+                                    />
+
+                                    <label htmlFor="consent" className="text-sm text-gray-600">
+                                        I have read and agree to the{" "}
+                                        <a
+                                            href="/privacy-policy"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-600 hover:underline"
+                                        >
+                                            Privacy Policy
+                                        </a>{" "}
+                                        and{" "}
+                                        <a
+                                            href="/terms-and-conditions"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-600 hover:underline"
+                                        >
+                                            Terms & Conditions
+                                        </a>.
+                                    </label>
+                                </div>
+
                             {/* Submit Button */}
                             <div className="pt-5">
 
                                 <button
                                     type="submit"
-                                    className="w-full md:w-auto px-10 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition font-semibold"
+                                    className="w-full md:w-auto px-10 py-4 bg-slate-900 text-white rounded-xl hover:bg-slate-700 transition font-semibold"
                                 >
                                     Submit Application
                                 </button>
