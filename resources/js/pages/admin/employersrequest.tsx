@@ -1,7 +1,9 @@
 import AdminLayout from "@/components/layout/adminLayout";
 import InfoCard from "@/components/sections/cards/InfoCards";
+import { usePage } from "@inertiajs/react";
 
 export default function EmployersRequestPage(){
+    const { message } = usePage().props as any;
   return (
     <AdminLayout>
         
@@ -23,11 +25,11 @@ export default function EmployersRequestPage(){
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                             <div>
                                 <h2 className="text-2xl font-bold text-slate-800">
-                                aaa
+                                {message.company_name}
                                 </h2>
 
                                 <p className="text-slate-500">
-                                    aaa
+                                    {message.company_website}
                                 </p>
                             </div>
 
@@ -47,17 +49,17 @@ export default function EmployersRequestPage(){
 
                         <InfoCard
                             label="Contact Person"
-                            value="{request.name}"
+                            value={message.name}
                         />
 
                         <InfoCard
                             label="Email"
-                            value="{request.email}"
+                            value={message.email}
                         />
 
                         <InfoCard
                             label="Contact Number"
-                            value="{request.contact}"
+                            value={message.contact}
                         />
 
                     </div>
@@ -79,7 +81,7 @@ export default function EmployersRequestPage(){
                         whitespace-pre-wrap
                         leading-relaxed
                     ">
-                        "{"request.message"}"
+                        {message.message}
                     </div>
 
                 </div>

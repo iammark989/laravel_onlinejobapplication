@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employersmessage;
 use App\Models\Job;
 use App\Models\Jobapplication;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -41,7 +42,7 @@ class UserController extends Controller
 
     return redirect()->intended('/admin/login');
     }
-
+    // VIEW EMPLOYER MESSAGE / INQUIRY LIST
     public function goToEmployersMessageList(){
         $messageList = Employersmessage::orderBy('created_at','ASC')->get();
         return Inertia::render('admin/employersmessagelist',[
@@ -49,9 +50,39 @@ class UserController extends Controller
         ]);
     }
 
-     public function goToEmployersRequestaaaa(){
-        return Inertia::render('admin/employersrequest');
+     public function goToEmployersRequest($id){
+        $message = Employersmessage::where('id','=',$id)->firstOrFail();
+        return Inertia::render('admin/employersrequest',[
+            'message' => $message,
+        ]);
     }
+
+        //CREATE NEW USER
+    public function createNewuser(Request $request){
+        $incomingFields = $request->validate([
+                'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+                'username' => 'required|string|max:50|unique:users,username',
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:users,email',
+                'role' => 'required|in:administrator,recruitment,marketing',
+                'password' => 'required|min:8|confirmed',
+            ]);
+        
+                if ($request->hasFile('image')) {
+                    $filename = $incomingFields['username'] . "-" . uniqid() . ".jpg" ;
+                    //$path = $request->file('images')->storeAs('images',$filename, 'public');
+                    $file = $request->file('image');
+                    $file->move(public_path('files/empimages'), $filename);
+                    $path = 'images/' . $filename;
+                    $incomingFields['image'] = $filename;
+                }else{
+                    $incomingFields['image'] = 'fallback-image.jpg';
+                }
+            User::create($incomingFields);
+            
+    }
+
+
 
 
 

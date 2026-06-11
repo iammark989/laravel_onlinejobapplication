@@ -84,10 +84,10 @@ export default function EmployerMessagesPage() {
                                                 gap-2
                                                 px-4
                                                 py-2
-                                                bg-blue-600
+                                                bg-slate-900
                                                 text-white
                                                 rounded-lg
-                                                hover:bg-blue-700
+                                                hover:bg-slate-700
                                                 transition
                                             "
                                         >

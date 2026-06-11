@@ -65,16 +65,34 @@ Route::get('/admin/login', function () {
     return Inertia::render('admin/login');
 })->name('adminlogin');
 
+Route::get('/admin',[QueryController::class,'goToAdminDashboard'])->name('adminhome')->middleware('adminonly');
+
+
+        // PROFILE - GO TO USER PROFILE
 Route::get('/admin/profile',function (){
     return Inertia::render('admin/userprofile');
 })->name('userprofile')->middleware('adminonly');
+
+        // PROFILE - GO TO USER MAINTENANCE
+Route::get('/admin/user-maintenance',function (){
+    return Inertia::render('admin/usermaintenance');
+})->name('usermaintenance')->middleware('adminonly');
+
+        // PROFILE - GO TO CREATE USER
+Route::get('/admin/user-maintenance/create-user',function(){
+    return Inertia::render('admin/usercreate');
+})->name('usercreatepage')->middleware('adminonly');
+
+        // PROFILE - CREATE NEW USER
+Route::post('/create-new-user',[UserController::class,'createNewuser'])->name('usercreate')->middleware('adminonly');
 
 Route::get('/admin/dashboard',[QueryController::class,'goToAdminDashboard'])->name('admindashboard')->middleware('adminonly');
 
 Route::get('/admin/careers',[QueryController::class,'goToAdminCareers'])->name('admincareers')->middleware('adminonly');
 
+    // EMPLOYER MESSAGE / INQUERIES
 Route::get('/admin/employers-messages',[UserController::class,'goToEmployersMessageList'])->name('adminemployersmessagelist')->middleware('adminonly');
-Route::get('/admin/employers-requestaaaa',[UserController::class,'goToEmployersRequest'])->name('adminemployersrequest')->middleware('adminonly');
+Route::get('/admin/employer-messages/{id}',[UserController::class,'goToEmployersRequest'])->name('adminemployersrequest')->middleware('adminonly');
 
     // USER CONTROLLERS
 Route::post('/admin/loginattempt',[UserController::class,'login'])->name('login');

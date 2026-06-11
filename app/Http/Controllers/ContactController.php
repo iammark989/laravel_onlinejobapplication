@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Employersmessage;
 use App\Models\Message;
+use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -54,6 +56,21 @@ class ContactController extends Controller
             $incomingFields['consent_ip'] = $this->address();
 
             Employersmessage::create($incomingFields);
+
+            $users = User::whereIn('role', [
+                'administrator',
+                'recruitment'
+            ])->get();
+
+            foreach ($users as $user) {
+                    Notification::create([
+                        'user_id' => $user->id,
+                        'title' => 'New Employer Inquiry',
+                        'message' => 'ABC Company submitted a hiring request.',
+                        'type' => 'employer_inquiry',
+                        'url' => '/admin/employer-messages/' . $request->id,
+                    ]);
+                }
 
     }
 }

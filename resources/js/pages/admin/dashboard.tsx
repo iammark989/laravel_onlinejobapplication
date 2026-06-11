@@ -80,7 +80,7 @@ const DashboardPage: React.FC = () => {
             <div
               className="
                 bg-blue-100
-                text-blue-600
+                text-slate-700
                 p-3
                 sm:p-4
                 rounded-xl

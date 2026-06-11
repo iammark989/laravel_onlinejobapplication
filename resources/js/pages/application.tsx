@@ -43,9 +43,7 @@ export default function JobApplicationPage() {
 
         router.post(`/careers/apply/${position.slug}`,form,{
         onError: (errors) => {
-        setErrorMsg(errors.errormsg);
-      
-      console.error(errors);
+        setErrorMsg(errors.errorMsg);
         },
         onSuccess: () => {
        setForm({

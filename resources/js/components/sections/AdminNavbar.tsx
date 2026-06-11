@@ -7,6 +7,7 @@ import {
     User,
     LogOut,
     Bell,
+    UserCog,
 } from 'lucide-react';
 
 export default function AdminNavbar() {
@@ -279,6 +280,20 @@ export default function AdminNavbar() {
                                             <User size={18} />
                                             User Profile
                                         </Link>
+                                        <Link
+                                            href="/admin/user-maintenance"
+                                            className="
+                                                flex
+                                                items-center
+                                                gap-3
+                                                px-5
+                                                py-4
+                                                hover:bg-gray-50
+                                            "
+                                        >
+                                            <UserCog size={18} />
+                                            User Maintenance
+                                        </Link>
 
                                         <Link
                                             href="/admin/logout"
@@ -378,6 +393,16 @@ export default function AdminNavbar() {
                                 <User size={18} />
 
                                 User Profile
+                            </Link>
+
+                            <Link
+                                href="/admin/user-maintenance"
+                                onClick={() => setOpen(false)}
+                                className="flex items-center gap-2 hover:text-[#D4AF37]"
+                            >
+                                <UserCog size={18} />
+
+                                User Maintenance
                             </Link>
 
                             <Link

@@ -327,7 +327,7 @@ const { flash } = usePage().props as any;
                     className="
                     w-full
                     sm:w-auto
-                    bg-slate-600
+                    bg-slate-900
                     hover:bg-slate-700
                     transition
                     text-white
