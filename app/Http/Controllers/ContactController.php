@@ -58,17 +58,18 @@ class ContactController extends Controller
             Employersmessage::create($incomingFields);
 
             $users = User::whereIn('role', [
+                'developer',
                 'administrator',
                 'recruitment'
             ])->get();
-
+            $lastMessage = Employersmessage::latest()->first();
             foreach ($users as $user) {
                     Notification::create([
                         'user_id' => $user->id,
                         'title' => 'New Employer Inquiry',
                         'message' => 'ABC Company submitted a hiring request.',
                         'type' => 'employer_inquiry',
-                        'url' => '/admin/employer-messages/' . $request->id,
+                        'url' => '/admin/employer-messages/' . $lastMessage->id,
                     ]);
                 }
 

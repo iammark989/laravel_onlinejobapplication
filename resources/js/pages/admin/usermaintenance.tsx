@@ -31,7 +31,7 @@ const UserMaintenancePage: React.FC = () => {
                         </div>
 
                         <Link
-                            href="/admin/users/create"
+                            href="/admin/user-maintenance/create-user"
                             className="
                                 inline-flex
                                 items-center
@@ -85,6 +85,10 @@ const UserMaintenancePage: React.FC = () => {
                                         Role
                                     </th>
 
+                                    <th className="text-left px-6 py-4 font-semibold text-gray-700">
+                                        Status
+                                    </th>
+
                                     <th className="text-center px-6 py-4 font-semibold text-gray-700">
                                         Actions
                                     </th>
@@ -127,10 +131,36 @@ const UserMaintenancePage: React.FC = () => {
 
                                         </td>
 
+                                        <td className="px-6 py-4">
+
+                                                {user.is_active == true ? 
+                                                <span
+                                                    className="
+                                                    px-3
+                                                    py-1
+                                                    rounded-full
+                                                    text-sm
+                                                    bg-blue-100
+                                                    text-blue-700
+                                                "
+                                            >Active</span> : <span
+                                                    className="
+                                                    px-3
+                                                    py-1
+                                                    rounded-full
+                                                    text-sm
+                                                    bg-red-100
+                                                    text-red-500
+                                                "
+                                            >Inactive</span>}
+                                          
+
+                                        </td>
+
                                         <td className="px-6 py-4 text-center">
 
                                             <Link
-                                                href={`/admin/users/${user.id}/edit`}
+                                                href={`/admin/users/${user.username}/edit`}
                                                 className="
                                                     inline-flex
                                                     items-center
@@ -227,10 +257,43 @@ const UserMaintenancePage: React.FC = () => {
 
                                     </div>
 
+                                     <div>
+
+                                        <p className="text-xs text-gray-500">
+                                            Status
+                                        </p>
+
+                                       {user.is_active == true ? 
+                                                <span
+                                                    className="
+                                                    inline-block
+                                                    mt-1
+                                                    px-3
+                                                    py-1
+                                                    rounded-full
+                                                    text-sm
+                                                    bg-blue-100
+                                                    text-blue-700
+                                                "
+                                            >Active</span> : <span
+                                                    className="
+                                                    inline-block
+                                                    mt-1
+                                                    px-3
+                                                    py-1
+                                                    rounded-full
+                                                    text-sm
+                                                    bg-red-100
+                                                    text-red-700
+                                                "
+                                            >Inactive</span>}
+
+                                    </div>
+
                                 </div>
 
                                 <Link
-                                    href={`/admin/users/${user.id}/edit`}
+                                    href={`/admin/users/${user.username}/edit`}
                                     className="
                                         mt-4
                                         w-full

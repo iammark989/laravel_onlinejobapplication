@@ -4,26 +4,28 @@ import { usePage, router } from "@inertiajs/react";
 import { User, Mail, Shield, Lock } from "lucide-react";
 import Swal from "sweetalert2";
 
-const UserCreatePage: React.FC = () => {
-  const { auth } = usePage().props as any;
-  const user = auth?.user;
-
+const UserEditPage: React.FC = () => {
+  const { users } = usePage().props as any;
+ 
   const [form, setForm] = useState({
     image: null as File | null,
-    username: "",
-    name: "",
-    email: "",
-    role: "recruitment",
-    password: "",
-    password_confirmation: "",
+
+    username: users.username,
+    name: users.name,
+    email: users.email,
+
+    role: users.role,
+
+    is_active: users.is_active,
+
 });
+
 
 const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
 
-    router.post("/create-new-user", form, {
+    router.post(`/admin/users/${users.username}/save`, form, {
         forceFormData: true,
         preserveScroll: true,
         onError: (error) => {
@@ -33,7 +35,7 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
         onSuccess:()=>{
             Swal.fire({
                           icon: "success",
-                          title: "User Successfully Added!",
+                          title: "Update Saved!",
                           //text: "User Successfully Added",
                           showConfirmButton: true,
                           confirmButtonColor: "#D4AF37",
@@ -67,6 +69,8 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
 
                     </div>
 
+                    
+
                     <form
                         onSubmit={handleSubmit}
                         className="space-y-6"
@@ -82,28 +86,36 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
                             <div className="flex flex-col items-center gap-4">
 
                                 <div className="
-                                    w-28
-                                    h-28
-                                    rounded-full
-                                    bg-gray-100
-                                    border
-                                    overflow-hidden
-                                    flex
-                                    items-center
-                                    justify-center
-                                ">
-                                    {form.image ? (
-                                        <img
-                                            src={URL.createObjectURL(form.image)}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    ) : (
-                                        <User
-                                            size={40}
-                                            className="text-gray-400"
-                                        />
-                                    )}
-                                </div>
+                                            w-32
+                                            h-32
+                                            rounded-full
+                                            overflow-hidden
+                                            border-4
+                                            border-blue-100
+                                            shadow-md
+                                        ">
+                                            {form.image ? (
+                                                <img
+                                                    src={URL.createObjectURL(form.image)}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={`${import.meta.env.VITE_IMAGE_URL}/files/empimages/${users.image}`}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            )}
+                                            <img
+                                                src={`${import.meta.env.VITE_IMAGE_URL}/files/empimages/${users.image}`}
+                                                alt="User"
+                                                className="
+                                                    w-full
+                                                    h-full
+                                                    object-cover
+                                                "
+                                            />
+                                            
+                                        </div>
 
                                 <input
                                     type="file"
@@ -119,6 +131,8 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
 
                             </div>
 
+                            
+
                         </div>
 
                         {/* Account Information */}
@@ -127,6 +141,8 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
                             <h2 className="text-xl font-bold text-gray-800 mb-6">
                                 Account Information
                             </h2>
+
+                            
 
                             <div className="grid md:grid-cols-2 gap-5">
 
@@ -147,6 +163,7 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
                                         className="w-full border rounded-xl px-4 py-3"
                                         required
                                         maxLength={16}
+                                        readOnly
                                     />
                                 </div>
 
@@ -223,70 +240,107 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
 
                         </div>
 
-                        {/* Password */}
+                        {/** USER STATUS */}
+
                         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                                                   
+
                             <h2 className="text-xl font-bold text-gray-800 mb-6">
-                                Security 
+                                Account Status
                             </h2>
-                                        
-                            <div className="grid md:grid-cols-2 gap-5">
-                                                
-                                <div>
-                                    <label className="block mb-2 text-sm font-medium">
-                                        Password <span className="text-red-500">* {errorMsg.password && (<span className="text-red-500 text-sm mt-2">Password Mismatch.</span>)}      </span>
-                                    </label>
 
-                                    <input
-                                        type="password"
-                                        value={form.password}
-                                        onChange={(e) =>
-                                            setForm({
-                                                ...form,
-                                                password: e.target.value,
-                                            })
-                                        }
-                                        className="w-full border rounded-xl px-4 py-3"
-                                        required
-                                        maxLength={16}
-                                        minLength={8}
-                                    />
-                                </div>
+                            <div className="flex items-center justify-between">
 
                                 <div>
-                                    <label className="block mb-2 text-sm font-medium">
-                                        Confirm Password <span className="text-red-500">*</span>  
-                                    </label>
 
-                                    <input
-                                        type="password"
-                                        value={form.password_confirmation}
-                                        onChange={(e) =>
-                                            setForm({
-                                                ...form,
-                                                password_confirmation:
-                                                    e.target.value,
-                                            })
-                                        }
-                                        className="w-full border rounded-xl px-4 py-3"
-                                        required
-                                        minLength={8}
-                                        maxLength={16}
-                                    />
+                                    <h3 className="font-semibold text-gray-800">
+                                        User Access
+                                    </h3>
+
+                                    <p className="text-sm text-gray-500">
+                                        Disable this user from accessing the admin portal.
+                                    </p>
+
                                 </div>
+
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        setForm({
+                                            ...form,
+                                            is_active: !form.is_active,
+                                        })
+                                    }
+                                    className={`
+                                        relative
+                                        inline-flex
+                                        h-7
+                                        w-14
+                                        items-center
+                                        rounded-full
+                                        transition
+                                        ${
+                                            form.is_active
+                                                ? "bg-green-500"
+                                                : "bg-gray-300"
+                                        }
+                                    `}
+                                >
+                                    <span
+                                        className={`
+                                            inline-block
+                                            h-5
+                                            w-5
+                                            transform
+                                            rounded-full
+                                            bg-white
+                                            transition
+                                            ${
+                                                form.is_active
+                                                    ? "translate-x-8"
+                                                    : "translate-x-1"
+                                            }
+                                        `}
+                                    />
+                                </button>
+
+                            </div>
+
+                            <div className="mt-4">
+
+                                {form.is_active ? (
+                                    <span className="
+                                        px-3 py-1
+                                        rounded-full
+                                        bg-green-100
+                                        text-green-700
+                                        text-sm
+                                    ">
+                                        Active
+                                    </span>
+                                ) : (
+                                    <span className="
+                                        px-3 py-1
+                                        rounded-full
+                                        bg-red-100
+                                        text-red-700
+                                        text-sm
+                                    ">
+                                        Inactive
+                                    </span>
+                                )}
 
                             </div>
 
                         </div>
 
-                        {/* Submit */}
-                        <div className="flex justify-end">
+                       
 
-                            <button
+                        {/* Submit */}
+                        <button
                                 type="submit"
                                 className="
-                                    bg-blue-600
-                                    hover:bg-blue-700
+                                    bg-amber-500
+                                    hover:bg-amber-600
                                     text-white
                                     px-6
                                     py-3
@@ -295,10 +349,10 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
                                     transition
                                 "
                             >
-                                Create User
+                                Update
                             </button>
 
-                        </div>
+                     
 
                     </form>
 
@@ -309,4 +363,4 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
   );
 };
 
-export default UserCreatePage;
+export default UserEditPage;

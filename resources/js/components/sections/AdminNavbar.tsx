@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
+
 
 import {
     Menu,
@@ -11,6 +12,8 @@ import {
 } from 'lucide-react';
 
 export default function AdminNavbar() {
+    const { auth } = usePage().props as any;
+      const user = auth?.user;
 
     const [open, setOpen] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
@@ -280,6 +283,9 @@ export default function AdminNavbar() {
                                             <User size={18} />
                                             User Profile
                                         </Link>
+                                        
+                                        {user.role == "developer" || user.role == "administrator"
+                                        ?
                                         <Link
                                             href="/admin/user-maintenance"
                                             className="
@@ -294,6 +300,24 @@ export default function AdminNavbar() {
                                             <UserCog size={18} />
                                             User Maintenance
                                         </Link>
+                                        :
+                                        <Link
+                                            href="/admin/user-maintenance"
+                                            className="
+                                                flex
+                                                items-center
+                                                gap-3
+                                                px-5
+                                                py-4
+                                                hover:bg-gray-50
+                                                hidden
+                                            "
+                                        >
+                                            <UserCog size={18} />
+                                            User Maintenance
+                                        </Link>
+                                        
+                                        }
 
                                         <Link
                                             href="/admin/logout"
@@ -395,7 +419,8 @@ export default function AdminNavbar() {
                                 User Profile
                             </Link>
 
-                            <Link
+                             {user.role == "developer" || user.role == "administrator" ? 
+                             <Link
                                 href="/admin/user-maintenance"
                                 onClick={() => setOpen(false)}
                                 className="flex items-center gap-2 hover:text-[#D4AF37]"
@@ -404,6 +429,19 @@ export default function AdminNavbar() {
 
                                 User Maintenance
                             </Link>
+                            :
+                            <Link
+                                href="/admin/user-maintenance"
+                                onClick={() => setOpen(false)}
+                                className="flex items-center gap-2 hover:text-[#D4AF37]"
+                                hidden
+                            >
+                                <UserCog size={18} />
+
+                                User Maintenance
+                            </Link>
+                            }       
+                            
 
                             <Link
                                 href="/admin/logout"

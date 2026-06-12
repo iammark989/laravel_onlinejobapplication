@@ -8,6 +8,7 @@ use App\Models\Jobapplication;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -22,16 +23,21 @@ class UserController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-
-        if(Auth::attempt($incomingFields)){
-            $request->session()->regenerate();
-            return redirect('/admin/dashboard');
-        }else{
-            throw ValidationException::withMessages([
-        'errormsg' => ['Invalid email or password.'],
-        ]);
-        }
-
+            if(Auth::attempt($incomingFields)){
+                $user = User::where('username', $request->username)->firstOrFail();
+                if (!$user->is_active) {
+                throw ValidationException::withMessages([
+                'errormsg' => ['Invalid username or password.'],
+                ]);
+                }else{
+                    $request->session()->regenerate();
+                    return redirect('/admin/dashboard');
+                }
+            }else{
+                throw ValidationException::withMessages([
+                'errormsg' => ['Invalid username or password.'],
+                ]);
+            }
     }
     // LOGOUT
     public function logout(Request $request){
@@ -42,12 +48,19 @@ class UserController extends Controller
 
     return redirect()->intended('/admin/login');
     }
+
     // VIEW EMPLOYER MESSAGE / INQUIRY LIST
     public function goToEmployersMessageList(){
         $messageList = Employersmessage::orderBy('created_at','ASC')->get();
         return Inertia::render('admin/employersmessagelist',[
             'messages' => $messageList,
         ]);
+    }
+
+    // GO TO USER MAINTENANCE
+    public function goToUserMaintenancePage(){
+        $users = User::where('role','!=','developer')->get();
+        return Inertia::render('admin/usermaintenance',['users' => $users,]);
     }
 
      public function goToEmployersRequest($id){
@@ -57,6 +70,55 @@ class UserController extends Controller
         ]);
     }
 
+        // ADMIN USER CHANGE PASSWORD
+        public function adminUserChangePassword(Request $request){
+            $incomingFields = $request->validate([
+                'current_password' => 'required',
+                'password' => 'required|min:8|confirmed|max:16',
+            ]);
+
+            if(Hash::check($incomingFields['current_password'],Auth()->user()->password)){
+            Auth::user()->update(['password' => Hash::make($incomingFields['password'])]);
+            }else{
+            throw ValidationException::withMessages([
+            'current_password' => ['Current password is incorrect']
+            ]);
+            }
+        }
+
+        // GO TO USER EDIT PAGE
+        public function goToUserEdit($username){
+                $users = User::where('username','=',$username)->firstOrFail();
+            return Inertia::render('admin/useredit',['users' => $users]);
+        }
+
+        // SAVE USER PROFILE UPDATE
+        public function saveUserProfileUpdate(Request $request,$username){
+            $incomingFields =  $request->validate([
+                'name' => 'required|string|max:100',
+                'email' => 'required|email|',
+                'role' => 'required',
+                'is_active' => 'required|boolean',
+                'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            ]);
+                
+
+            $user = User::where('username', $username)->firstOrFail();
+
+            if ($request->hasFile('image')) {
+                    $filename = $incomingFields['username'] . "-" . uniqid() . ".jpg" ;
+                    //$path = $request->file('images')->storeAs('images',$filename, 'public');
+                    $file = $request->file('image');
+                    $file->move(public_path('files/empimages'), $filename);
+                    $path = 'images/' . $filename;
+                    $incomingFields['image'] = $filename;
+                }else{
+                    $incomingFields['image'] = $user->image;
+                }
+
+            $user->update($incomingFields);
+        }
+
         //CREATE NEW USER
     public function createNewuser(Request $request){
         $incomingFields = $request->validate([
@@ -65,7 +127,7 @@ class UserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255|unique:users,email',
                 'role' => 'required|in:administrator,recruitment,marketing',
-                'password' => 'required|min:8|confirmed',
+                'password' => 'required|min:8|confirmed|max:16',
             ]);
         
                 if ($request->hasFile('image')) {

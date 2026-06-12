@@ -72,11 +72,18 @@ Route::get('/admin',[QueryController::class,'goToAdminDashboard'])->name('adminh
 Route::get('/admin/profile',function (){
     return Inertia::render('admin/userprofile');
 })->name('userprofile')->middleware('adminonly');
+        
+        // PROFILE - ADMI USER CHANGE PASSWORD
+Route::put('/admin/profile/change-password',[userController::class,'adminUserChangePassword'])->name('adminuserchangepassword')->middleware('adminonly');
+
+        // PROFILE - GO TO USER EDIT PAGE
+Route::get('/admin/users/{username}/edit',[UserController::class,'goToUserEdit'])->name('gotouseredit')->middleware('adminonly');
+        
+        // PROFILE - SAVE EDIT
+Route::post('/admin/users/{username}/save',[UserController::class,'saveUserProfileUpdate'])->name('saveuserprofileupdate')->middleware('adminonly');
 
         // PROFILE - GO TO USER MAINTENANCE
-Route::get('/admin/user-maintenance',function (){
-    return Inertia::render('admin/usermaintenance');
-})->name('usermaintenance')->middleware('adminonly');
+Route::get('/admin/user-maintenance',[UserController::class,'goToUserMaintenancePage'])->name('usermaintenance')->middleware('adminonly');
 
         // PROFILE - GO TO CREATE USER
 Route::get('/admin/user-maintenance/create-user',function(){

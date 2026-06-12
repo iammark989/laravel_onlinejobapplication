@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AdminLayout from "@/components/layout/adminLayout";
 import { usePage, router } from "@inertiajs/react";
 import { User, Mail, Shield, Lock } from "lucide-react";
+import Swal from "sweetalert2";
 
 const ProfilePage: React.FC = () => {
   const { auth } = usePage().props as any;
@@ -13,10 +14,12 @@ const ProfilePage: React.FC = () => {
     password_confirmation: "",
   });
 
+  const [errorMsg,setErrormsg] = useState<Record<string, string>>({});
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    router.put("/admin/profile/password", form, {
+    router.put("/admin/profile/change-password", form, {
       preserveScroll: true,
       onSuccess: () => {
         setForm({
@@ -24,6 +27,26 @@ const ProfilePage: React.FC = () => {
           password: "",
           password_confirmation: "",
         });
+        
+       Swal.fire({
+              icon: "success",
+              title: "Password Successfully Updated!",
+              showConfirmButton: true,
+              //confirmButtonColor: "#D4AF37",
+              timer: 2000,
+              timerProgressBar: true,
+              }).then((result) => {
+              if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+               window.location.href = "/admin/profile";
+              }
+              });             
+                
+
+
+      },
+      onError:(error) => {
+        setErrormsg(error);
+          console.log(error);
       },
     });
   };
@@ -51,9 +74,20 @@ const ProfilePage: React.FC = () => {
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
 
                 <div className="flex justify-center mb-5">
-                  <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center">
-                    <User size={40} className="text-blue-600" />
-                  </div>
+                    <div
+                        className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-100 shadow-md 
+                                  bg-gray-100 flex items-center justify-center"
+                        >
+                        {user?.image ? (
+                            <img
+                                src={`${import.meta.env.VITE_IMAGE_URL}/files/empimages/${user.image}`}
+                                alt="User Picture"
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <User size={40} className="text-blue-600" />
+                        )}
+                    </div>
                 </div>
 
                 <h2 className="text-center text-xl font-bold text-gray-800">
@@ -134,7 +168,7 @@ const ProfilePage: React.FC = () => {
                   <Lock className="text-blue-600" size={22} />
 
                   <h2 className="text-xl font-bold text-gray-800">
-                    Change Password
+                    Change Password 
                   </h2>
                 </div>
 
@@ -145,7 +179,7 @@ const ProfilePage: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">
-                      Current Password
+                      Current Password  <span>{errorMsg.current_password && (<span className="text-red-500 text-sm mt-2">Current password is incorrect</span>)} </span> 
                     </label>
 
                     <input
@@ -164,7 +198,7 @@ const ProfilePage: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-600 mb-2">
-                      New Password
+                      New Password  <span>{errorMsg.password && (<span className="text-red-500 text-sm mt-2">New password mismatch</span>)} </span> 
                     </label>
 
                     <input
