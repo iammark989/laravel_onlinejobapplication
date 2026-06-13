@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employersmessage;
 use App\Models\Job;
 use App\Models\Jobapplication;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,8 +64,10 @@ class UserController extends Controller
         return Inertia::render('admin/usermaintenance',['users' => $users,]);
     }
 
+    // GO TO EMPLOYERS MESSAGE / INQUIRY PAGE
      public function goToEmployersRequest($id){
         $message = Employersmessage::where('id','=',$id)->firstOrFail();
+        Notification::where('id',$id)->update(['is_read' =>true]);
         return Inertia::render('admin/employersrequest',[
             'message' => $message,
         ]);

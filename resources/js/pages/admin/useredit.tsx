@@ -339,8 +339,8 @@ const [ errorMsg,setErrorMsg ] = useState<Record<string, string>>({});
                         <button
                                 type="submit"
                                 className="
-                                    bg-amber-500
-                                    hover:bg-amber-600
+                                    bg-cyan-500
+                                    hover:bg-cyan-600
                                     text-white
                                     px-6
                                     py-3

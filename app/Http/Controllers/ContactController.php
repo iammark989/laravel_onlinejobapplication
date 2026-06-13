@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ReplyToEmployersJob;
 use App\Models\Employersmessage;
 use App\Models\Message;
 use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ContactController extends Controller
 {
@@ -33,7 +35,6 @@ class ContactController extends Controller
         return $_SERVER['REMOTE_ADDR'];
     }
     }
-
     public function employermessage(Request $request){
             $incomingFields = $request->validate([
             'name' => 'required|string|max:100',
@@ -49,7 +50,7 @@ class ContactController extends Controller
             'experience_level' => 'required|string|max:30',
             'salary_range' => 'required|string|max:30',
             'timeline' =>'required|string|max:30',
-            'message' =>'required|string|max:30',
+            'message' =>'required|string|max:1000',
             'privacy_consent' => 'required|boolean|accepted',
             ]);
             $incomingFields['privacy_consent_at'] = now();
@@ -66,12 +67,41 @@ class ContactController extends Controller
             foreach ($users as $user) {
                     Notification::create([
                         'user_id' => $user->id,
-                        'title' => 'New Employer Inquiry',
-                        'message' => 'ABC Company submitted a hiring request.',
+                        'title' => 'Employer Inquiry',
+                        'name' => $lastMessage->name,
+                        'position' => $lastMessage->position,
+                        'message' => $lastMessage->message,
                         'type' => 'employer_inquiry',
                         'url' => '/admin/employer-messages/' . $lastMessage->id,
                     ]);
                 }
 
+    }
+
+    // GO TO CONTACT EMPLOYER / REPLY TO INQUIRY
+    public function contactEmployer($id){
+        $message = Employersmessage::where('id','=',$id)->firstOrFail();
+        return Inertia::render('admin/contactemployer',[
+            'message' => $message,
+        ]);
+    }
+
+    // SEND MESSAGE / REPLY TO EMPLOYER
+    public function contactEmployerSend(Request $request,$id){
+        $incomingFields = $request->validate([
+            'subject' => 'required|string|max:100',
+            'message' => 'required|string|max:1000',
+        ]);
+
+        $message = Employersmessage::where('id','=',$id)->firstOrFail();
+        $sender = auth()->user()->role;
+
+        $email = $message->email;
+        $subject = $request->subject;
+        $message = $request->message;
+        $name = $message->email;
+
+        ReplyToEmployersJob::dispatch($email,$subject,$message,$name);
+        
     }
 }

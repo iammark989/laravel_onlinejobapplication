@@ -36,8 +36,8 @@ const UserMaintenancePage: React.FC = () => {
                                 inline-flex
                                 items-center
                                 gap-2
-                                bg-blue-600
-                                hover:bg-blue-700
+                                bg-cyan-500
+                                hover:bg-cyan-700
                                 text-white
                                 px-5
                                 py-3

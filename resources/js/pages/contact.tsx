@@ -71,6 +71,9 @@ const ContactUs: React.FC = () => {
           });
 
       },
+      onError: (error) => {
+       // console.log(error);
+      },
     });
   };
 
@@ -107,13 +110,13 @@ const ContactUs: React.FC = () => {
               <input name="company_name" placeholder="Company Name" className="input" value={form.company_name} onChange={handleChange} required/>
               <input name="company_website" placeholder="Company Website" className="input" value={form.company_website} onChange={handleChange} />
 
-              <select name="company_size" className="input" value={form.company_size} onChange={handleChange} required>
+              {/*<select name="company_size" className="input" value={form.company_size} onChange={handleChange} required>
                 <option value="">Company Size</option>
                 <option value="1-10">1-10</option>
                 <option value="11-50">11-50</option>
                 <option value="51-200">51-200</option>
                 <option value="200+">200+</option>
-              </select>
+              </select>*/}
 
               <input name="industry" placeholder="Industry" value={form.industry} className="input" onChange={handleChange} required/>
             </div>
@@ -128,11 +131,12 @@ const ContactUs: React.FC = () => {
 
               <select name="category" className="input" value={form.category} onChange={handleChange} required>
                 <option value="">Category</option>
-                <option value="IT OR SOFTWARE">IT / Software</option>
-                <option value="ADMIN OR VA">Admin / VA</option>
+                <option value="IT / SOFTWARE">IT / Software</option>
+                <option value="ADMIN / VA">Admin / VA</option>
                 <option value="MARKETING">Marketing</option>
                 <option value="FINANCE">Finance</option>
-                <option value="CUSTOMER SUPPORT">Customer Support</option>
+                <option value="CUSTOMER SERVICE">Customer Support</option>
+                <option value="OTHERS">Others</option>
               </select>
 
               <select name="job_type" className="input" value={form.job_type} onChange={handleChange} required>

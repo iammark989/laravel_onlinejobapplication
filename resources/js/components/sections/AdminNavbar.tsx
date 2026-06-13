@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, usePage } from '@inertiajs/react';
+import { Link, usePage,router } from '@inertiajs/react';
+import { useEffect } from 'react';
 
 
 import {
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react';
 
 export default function AdminNavbar() {
+    const { notificationCount, notificationDetails } = usePage().props as any;
     const { auth } = usePage().props as any;
       const user = auth?.user;
 
@@ -19,6 +21,23 @@ export default function AdminNavbar() {
     const [profileOpen, setProfileOpen] = useState(false);
 
     const [notificationOpen, setNotificationOpen] = useState(false);
+
+    useEffect(() => {
+
+    const interval = setInterval(() => {
+
+        router.reload({
+            only: [
+                "notificationCount",
+                "notificationDetails",
+            ],
+        });
+
+    }, 15000);
+
+    return () => clearInterval(interval);
+
+}, []);
 
     return (
          <header
@@ -122,7 +141,7 @@ export default function AdminNavbar() {
                                 >
                                     <Bell size={20} className="text-slate-700" />
 
-                                    {0 > 0 && (
+                                    {notificationCount > 0 && (
                                         <span
                                             className="
                                                 absolute
@@ -140,7 +159,7 @@ export default function AdminNavbar() {
                                                 justify-center
                                             "
                                         >
-                                            {0}
+                                            {notificationCount}
                                         </span>
                                     )}
                                 </button>
@@ -169,49 +188,54 @@ export default function AdminNavbar() {
                                         </div>
 
                                         <div className="max-h-96 overflow-y-auto">
+                                            
+                                           <div className="grid gap-8">
 
-                                            <Link
-                                                href="/admin/employers"
-                                                className="
-                                                    block
-                                                    px-5
-                                                    py-4
-                                                    hover:bg-gray-50
-                                                    border-b
-                                                "
-                                            >
-                                                <p className="font-medium text-slate-800">
-                                                    New Employer Inquiry
-                                                </p>
+                                    <div className="max-h-96 overflow-y-auto">
 
-                                                <p className="text-sm text-slate-500">
-                                                    ABC Company submitted a hiring request.
-                                                </p>
-                                            </Link>
+                            {notificationDetails.length === 0 ? (
+                                <div className="p-6 text-center text-slate-500">
+                                    No new notifications
+                                </div>
+                            ) :
+                            notificationDetails.map((notification: any) => (
 
-                                            <Link
-                                                href="/admin/applicants"
-                                                className="
-                                                    block
-                                                    px-5
-                                                    py-4
-                                                    hover:bg-gray-50
-                                                "
-                                            >
-                                                <p className="font-medium text-slate-800">
-                                                    New Applicant
-                                                </p>
+                                <Link
+                                    key={notification.id}
+                                    href={notification.url}
+                                    className="
+                                        block
+                                        px-5
+                                        py-4
+                                        hover:bg-gray-50
+                                        border-b
+                                        transition
+                                    "
+                                >
+                                    <p className="font-medium text-slate-800">
+                                        {notification.title}
+                                    </p>
 
-                                                <p className="text-sm text-slate-500">
-                                                    John Doe applied for Executive VA.
-                                                </p>
-                                            </Link>
+                                    <p className="text-sm text-slate-500 mt-1">
+                                        {notification.name}
+                                    </p>
+
+                                    <p className="text-xs text-slate-400 mt-2">
+                                        {notification.position}
+                                    </p>
+                                </Link>
+
+                            ))}
+
+                        </div>
+                            
+                    </div>
 
                                         </div>
 
                                         <div className="border-t">
                                             <Link
-                                                href="/admin/notifications"
+                                                href="/admin/employers-messages"
                                                 className="
                                                     block
                                                     text-center
@@ -395,7 +419,7 @@ export default function AdminNavbar() {
                         {/* Mobile Divider */}
                         <div className="border-t border-gray-200 pt-4 flex flex-col gap-4">
                             <Link
-                                href="/admin/notifications"
+                                href="/admin/employers-messages"
                                 onClick={() => setOpen(false)}
                                 className="flex items-center gap-2 hover:text-[#D4AF37]"
                             >
@@ -403,9 +427,9 @@ export default function AdminNavbar() {
 
                                 Notifications
 
-                                {0 > 0 && (
+                                {notificationCount > 0 && (
                                     <span className="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">
-                                        {0}
+                                        {notificationCount}
                                     </span>
                                 )}
                             </Link>

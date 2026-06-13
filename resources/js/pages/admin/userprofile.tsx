@@ -238,8 +238,8 @@ const ProfilePage: React.FC = () => {
                     type="submit"
                     className="
                       w-full md:w-auto
-                      bg-blue-600
-                      hover:bg-blue-700
+                      bg-cyan-600
+                      hover:bg-cyan-700
                       text-white
                       font-medium
                       px-6

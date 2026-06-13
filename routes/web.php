@@ -97,11 +97,15 @@ Route::get('/admin/dashboard',[QueryController::class,'goToAdminDashboard'])->na
 
 Route::get('/admin/careers',[QueryController::class,'goToAdminCareers'])->name('admincareers')->middleware('adminonly');
 
-    // EMPLOYER MESSAGE / INQUERIES
+        // EMPLOYER MESSAGE / INQUERIES 
 Route::get('/admin/employers-messages',[UserController::class,'goToEmployersMessageList'])->name('adminemployersmessagelist')->middleware('adminonly');
 Route::get('/admin/employer-messages/{id}',[UserController::class,'goToEmployersRequest'])->name('adminemployersrequest')->middleware('adminonly');
+        // GO TO REPLY TO EMPLOYER INQUIRY - CONTACT EMPLOYER
+Route::get('/admin/employer-messages/{id}/reply',[ContactController::class,'contactEmployer'])->name('contactemployer')->middleware('adminonly');
+        // SEND MESSAGE / REPLY TO EMPLOYER
+Route::post('/admin/employer-message/{id}/send',[ContactController::class,'contactEmployerSend'])->name('contactemployersend')->middleware('adminonly');
 
-    // USER CONTROLLERS
+// USER CONTROLLERS
 Route::post('/admin/loginattempt',[UserController::class,'login'])->name('login');
 
 Route::post('/admin/logout',[UserController::class,'logout'])->name('logout')->middleware('adminonly');
@@ -122,5 +126,6 @@ Route::get('/admin/careers/{slug}/applicants',[CareerController::class,'viewAppl
         // UPDATE APPLICANT STATUS
 Route::put('/admin/applicants/{id}',[CareerController::class,'updateApplicantStatus'])->name('updateapplicantstatus')->middleware('adminonly');
         
+
 require __DIR__.'/settings.php';
 //require __DIR__.'/auth.php';

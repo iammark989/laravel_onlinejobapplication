@@ -47,7 +47,15 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
-        ],
+            ],
+             'recruitment' => [
+            'transport' => 'smtp',
+            'host' => env('RECRUITMENT_MAIL_HOST'),
+            'port' => env('RECRUITMENT_MAIL_PORT'),
+            'username' => env('RECRUITMENT_MAIL_USERNAME'),
+            'password' => env('RECRUITMENT_MAIL_PASSWORD'),
+            'encryption' => env('RECRUITMENT_MAIL_ENCRYPTION'),
+            ],
 
         'ses' => [
             'transport' => 'ses',

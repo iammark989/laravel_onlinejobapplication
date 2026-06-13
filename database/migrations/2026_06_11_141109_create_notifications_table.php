@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('title');
+            $table->string('name');
+            $table->string('position');
             $table->text('message');
             $table->string('type');
             $table->string('url')->nullable();
+            $table->boolean('is_read')->default(false);
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });

@@ -4,6 +4,10 @@ import { usePage } from "@inertiajs/react";
 
 export default function EmployersRequestPage(){
     const { message } = usePage().props as any;
+
+
+ 
+
   return (
     <AdminLayout>
         
@@ -66,6 +70,49 @@ export default function EmployersRequestPage(){
 
                 </div>
 
+                {/* HIRING DETAILS */}
+                <div className="mt-8">
+
+                    <h3 className="font-semibold text-slate-800 mb-4">
+                        Hiring Details
+                    </h3>
+
+                    <div className="grid md:grid-cols-3 gap-4">
+
+                        <InfoCard
+                            label="Position"
+                            value={message.position}
+                        />
+
+                        <InfoCard
+                            label="Category"
+                            value={message.category}
+                        />
+
+                        <InfoCard
+                            label="Job Type"
+                            value={message.job_type}
+                        />
+
+                        <InfoCard
+                            label="Experience Level"
+                            value={message.experience_level}
+                        />
+
+                        <InfoCard
+                            label="Salary Range"
+                            value={message.salary_range}
+                        />
+
+                         <InfoCard
+                            label="Time Line"
+                            value={message.timeline}
+                        />
+
+                    </div>
+
+                </div>
+
                  {/* MESSAGE */}
                 <div className="mt-8">
 
@@ -93,24 +140,25 @@ export default function EmployersRequestPage(){
                             flex-wrap
                             gap-3
                         ">
-                            <button
+                            {/*<button
                                 className="
                                     px-5
                                     py-3
-                                    bg-blue-600
+                                    bg-gray-600
                                     text-white
                                     rounded-xl
                                 "
                             >
                                 Mark as Reviewed
-                            </button>
+                            </button>*/}
 
                             <a
-                                href={`mailto:"$request.email"`}
+                                href={`/admin/employer-messages/${message.id}/reply`}
                                 className="
                                     px-5
                                     py-3
-                                    bg-green-600
+                                    bg-cyan-500
+                                    hover:bg-cyan-600
                                     text-white
                                     rounded-xl
                                 "
