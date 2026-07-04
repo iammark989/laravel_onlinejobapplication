@@ -1,0 +1,179 @@
+import MainLayout from "@/components/layout/mainLayout";
+import { Link } from "@inertiajs/react";
+import Cta from "@/components/sections/cta";
+import Whychooseus from "@/components/sections/whychooseus";
+import {
+  CheckCircle,
+  Users,
+  Clock,
+  ShieldCheck,
+  Handshake,
+} from "lucide-react";
+
+export default function PositionPage() {
+  return (
+    <MainLayout>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            {/* Content */}
+            <div>
+
+              <span className="inline-block bg-blue-100 text-slate-900 px-4 py-2 rounded-full text-sm font-medium">
+                E-Commerce & Amazon Virtual Assistant{service.title}
+              </span>
+
+              <h1 className="mt-5 text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+                Dedicated Support for Growing Online Stores {service.header}
+              </h1>
+
+              <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+                Our E-Commerce Virtual Assistants help manage online storefronts,
+                product listings,inventory, customer inquiries, and marketplace
+                operations so you can scale confidently {service.position_duties}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="
+                    px-6 py-3
+                    bg-slate-900
+                    text-white
+                    rounded-xl
+                    hover:bg-slate-800
+                    transition
+                  "
+                >
+                  Request Talent
+                </Link>
+
+                {/*<Link
+                  href="/contact"
+                  className="
+                    px-6 py-3
+                    border
+                    border-slate-300
+                    rounded-xl
+                    hover:bg-slate-100
+                    transition
+                  "
+                >
+                  Contact Us
+                </Link>*/}
+              </div>
+
+            </div>
+
+            {/* Image */}
+            <div>
+              <img
+                src={`${import.meta.env.VITE_IMAGE_URL}/files/images/ecommerceamazonva.webp`}{service.position_image}
+                alt="E-Commerce & Amazon Virtual Assistant"
+                className="
+                  w-full
+                  rounded-3xl
+                  shadow-xl
+                  object-cover
+                  h-[350px]
+                  md:h-[500px]
+                "
+              />
+            </div>
+
+          </div>
+                <div className="bg-blue-50 border-l-4 border-slate-500 p-6 rounded-r-xl">
+                    <p className="text-xl font-semibold text-slate-800">
+                        Focus on growing sales while we help manage the day-to-day operations.{service.short_spills_highlights}
+                    </p>
+                </div>      
+        </div>
+      </section>
+
+      {/* Services Included */}
+      <section className="py-20 bg-white">
+
+        <div className="max-w-7xl mx-auto px-4">
+
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold text-slate-800">
+              How We Can Help
+            </h2>
+
+            <p className="mt-4 text-slate-600">
+              Support services designed to help your business operate
+              more efficiently. {service.short_position_service}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {[
+              "Product listing management",
+              "Amazon Seller Central support",
+              "Inventory monitoring",
+              "Customer service",
+              "Order processing",
+            ].map((item) => (
+              <div
+                key={item}
+                className="
+                  bg-slate-50
+                  p-6
+                  rounded-2xl
+                  border
+                  border-slate-100
+                "
+              >
+                <div className="flex items-center gap-3">
+                  <CheckCircle
+                    size={20}
+                    className="text-green-600"
+                  />
+
+                  <span className="font-medium text-slate-700">
+                    {item}
+                  </span>
+                </div>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Why Businesses Hire This Role */}
+      <section className="py-20 bg-slate-50">
+
+        <div className="max-w-5xl mx-auto px-4 text-center">
+
+          <h2 className="text-4xl font-bold text-slate-800">
+            Scale Your Online Store with Expert Support
+          </h2>
+
+          <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+            Managing an online business requires constant attention to
+            listings, inventory, customer service, and marketplace operations.
+            Our E-Commerce Virtual Assistants help optimize workflows so you
+            can focus on expanding your business.
+          </p>
+
+        </div>
+
+      </section>
+
+      {/* Why Choose Us */}
+      <Whychooseus />
+
+      {/* CTA */}
+      <Cta />
+
+    </MainLayout>
+  );
+}

@@ -42,7 +42,7 @@ class ContactController extends Controller
             'contact' => 'required|string|max:25',
             'company_name' => 'required|string|max:30',
             'company_website' => 'string|max:50',
-            'company_size' => 'required|string|max:15',
+            //'company_size' => 'required|string|max:15',
             'industry' => 'required|string|max:30',
             'position' => 'required|string|max:50',
             'category' =>  'required|string|max:50',

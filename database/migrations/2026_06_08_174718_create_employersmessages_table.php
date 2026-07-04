@@ -21,7 +21,7 @@ return new class extends Migration
             // company
             $table->string('company_name')->nullable();
             $table->string('company_website')->nullable();
-            $table->string('company_size')->nullable();
+           // $table->string('company_size')->nullable();
             $table->string('industry')->nullable();
 
             // hiring
